@@ -100,7 +100,7 @@ namespace KrynnTimeManager.lib
             return new KrynnDateTime(Year, Month, Day, Hour + value, Minute, Second);
         }
 
-
+        //TODO:Moooooooon Phases
 
         public string toDoubleDigit(int toConvert)
         {
