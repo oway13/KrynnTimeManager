@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KrynnTimeManager.lib;
 
 namespace KrynnTimeManager
 {
@@ -20,9 +21,11 @@ namespace KrynnTimeManager
     /// </summary>
     public partial class MainWindow : Window
     {
+        private lib.KrynnDateTime testDate = new lib.KrynnDateTime(423, 1, 12);
         public MainWindow()
         {
             InitializeComponent();
+            dateTimeTest.Text = testDate.ToString();
         }
     }
 }

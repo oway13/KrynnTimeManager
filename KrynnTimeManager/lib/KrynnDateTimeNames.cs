@@ -10,12 +10,12 @@ namespace KrynnTimeManager.lib
     {
         public static string getMonth(int month)
         {
-            return ErgothianMonthsOfYear[month];
+            return ErgothianMonthsOfYear[month-1];
         }
 
         public static string getDayOfWeek(int dayOfWeek)
         {
-            return ErgothianDaysOfWeek[dayOfWeek];
+            return ErgothianDaysOfWeek[dayOfWeek-1];
         }
 
         private static readonly String[] ErgothianMonthsOfYear = new string[]
