@@ -18,7 +18,8 @@ namespace KrynnTimeManager.lib
             this.Hour = 0;
             this.Second = 0;
             this.DayOfWeek = this.Day % 7;
-
+            normalizeTime();
+            
         }
 
         public KrynnDateTime(int year, int month, int day, int hour, int minute, int second)
@@ -30,21 +31,73 @@ namespace KrynnTimeManager.lib
             this.Hour = hour;
             this.Second = second;
             this.DayOfWeek = this.Day % 7;
+            normalizeTime();
         }
 
-        public int Year { get; }
-        public int Month { get; }
-        public int Minute { get; }
-        public int Hour { get; }
-        public int Day { get; }
-        public int Second { get; }
-        public int DayOfWeek { get; }
+        public int Year { get; private set; }
+        public int Month { get; private set; }
+        public int Minute { get; private set; }
+        public int Hour { get; private set; }
+        public int Day { get; private set; }
+        public int Second { get; private set; }
+        public int DayOfWeek { get; private set; }
 
+        private void normalizeTime()
+        {
+            while(Second > 60)
+            {
+                this.Second -= 60;
+                this.Minute++;
+            }
 
-        //TODO: Add Month, Year Switching Behavior to something
+            while(Minute > 60)
+            {
+                this.Minute -= 60;
+                this.Hour++;
+            }
+            while (Hour > 24)
+            {
+                this.Hour -= 24;
+                this.Day++;
+            }
+
+            while(Day > 28)
+            {
+                this.Day -= 28;
+                this.Month++;
+            }
+
+            while(Month > 12)
+            {
+                this.Month -= 12;
+                this.Year++;
+            }
+            this.DayOfWeek = this.Day % 7;
+        }
+
         public KrynnDateTime AddDays(int value)
         {
             return new KrynnDateTime(Year, Month, Day + value, Hour, Minute, Second);
+        }
+        public KrynnDateTime AddMonths(int value)
+        {
+            return new KrynnDateTime(Year, Month + value, Day, Hour, Minute, Second);
+        }
+        public KrynnDateTime AddYears(int value)
+        {
+            return new KrynnDateTime(Year + value, Month, Day, Hour, Minute, Second);
+        }
+        public KrynnDateTime AddSeconds(int value)
+        {
+            return new KrynnDateTime(Year, Month, Day, Hour, Minute, Second + value);
+        }
+        public KrynnDateTime AddMinutes(int value)
+        {
+            return new KrynnDateTime(Year, Month, Day, Hour, Minute + value, Second);
+        }
+        public KrynnDateTime AddHours(int value)
+        {
+            return new KrynnDateTime(Year, Month, Day, Hour + value, Minute, Second);
         }
 
 
