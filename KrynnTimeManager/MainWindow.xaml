@@ -10,26 +10,38 @@
         Width="800">
   <TabControl>
     <TabItem Header='Calendar'>
-      <StackPanel>
-        <TextBlock x:Name='dateTimeTest'
-                   HorizontalAlignment='Left'
-                   TextWrapping='Wrap'
-                   Text='TextBlock'
-                   VerticalAlignment='Top' />
-      </StackPanel>
-      </TabItem>
-    
-      <TabItem Header='Time'>
-        <Grid Background='#FFE5E5E5' />
-      </TabItem>
+      <DockPanel>
+        <StackPanel DockPanel.Dock='Right'
+                    Width='300'
+                    Background='Gray'
+                    Visibility='Collapsed'></StackPanel>
+        <Grid DockPanel.Dock='Top'
+              Background='AliceBlue'>
+          <TextBlock x:Name='dateTimeTest'
+                     HorizontalAlignment='Left'
+                     TextWrapping='Wrap'
+                     Text='Current DateTime'
+                     VerticalAlignment='Top' />
+          <Calendar DisplayMode='Year'
+                    HorizontalAlignment='Center'
+                    DisplayDate='0421-01-01'
+                    DisplayDateEnd='0426-12-12'
+                    DisplayDateStart='0421-01-01' />
+          <TextBlock HorizontalAlignment='Right'
+                     VerticalAlignment='Top'
+                     Text='Next Event' />
+        </Grid>
+        <Grid Background='BlanchedAlmond'></Grid>
+      </DockPanel>
+    </TabItem>
+    <TabItem Header='Time'>
+      <Grid Background='#FFE5E5E5' />
+    </TabItem>
     <TabItem Header='Campaign'>
       <Grid Background='#FFE5E5E5' />
     </TabItem>
     <TabItem Header='Events List'>
       <Grid Background='#FFE5E5E5' />
     </TabItem>
-    
   </TabControl>
-    
-    
 </Window>
