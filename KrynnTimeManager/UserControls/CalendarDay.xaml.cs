@@ -24,5 +24,17 @@ namespace KrynnTimeManager.UserControls
         {
             InitializeComponent();
         }
+
+        private void Grid_MouseEnter(object sender, MouseEventArgs e)
+        {
+            outerBorder.BorderBrush = Brushes.Blue;
+            outerBorder.BorderThickness = new Thickness(2);
+        }
+
+        private void Grid_MouseLeave(object sender, MouseEventArgs e)
+        {
+            outerBorder.BorderBrush = Brushes.Black;
+            outerBorder.BorderThickness = new Thickness(1);
+        }
     }
 }

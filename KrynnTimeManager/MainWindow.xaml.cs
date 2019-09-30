@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KrynnTimeManager.lib;
+using KrynnTimeManager.UserControls;
 
 namespace KrynnTimeManager
 {
@@ -26,6 +27,17 @@ namespace KrynnTimeManager
         {
             InitializeComponent();
             dateTimeTest.Text = testDate.ToString();
+
+            for(int i = 1; i < 5; i++)
+            {
+                for(int j = 0; j < 7; j++)
+                {
+                    CalendarDay dayToAdd = new CalendarDay();
+                    CalendarDays.Children.Add(dayToAdd);
+                    Grid.SetRow(dayToAdd, i);
+                    Grid.SetColumn(dayToAdd, j);
+                }
+            }
         }
     }
 }
