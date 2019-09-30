@@ -50,9 +50,7 @@ namespace KrynnTimeManager
       {
         for (int j = 0; j < 7; j++)
         {
-          CalendarDay dayToAdd = new CalendarDay();
-          //dayToAdd.Day = count++;
-          dayToAdd.DayNumber.Text = count.ToString();
+          CalendarDay dayToAdd = new CalendarDay(new KrynnDateTime(calendarDate.Year, calendarDate.Month, count));
           count++;
           CalendarDays.Children.Add(dayToAdd);
           Grid.SetRow(dayToAdd, i);

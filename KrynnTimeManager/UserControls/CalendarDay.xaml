@@ -39,8 +39,10 @@
                 </LinearGradientBrush.RelativeTransform>
                 <GradientStop Color='#00000000'
                               Offset='0' />
-                <GradientStop Color='LightGray' />
-                <GradientStop Offset='0.996'
+                <GradientStop x:Name='SolinariLeft'
+                              Color='LightGray' />
+                <GradientStop x:Name='SolinariRight'
+                              Offset='0.996'
                               Color='LightGray' />
                 <GradientStop Color='#00000000'
                               Offset='1' />
@@ -66,8 +68,10 @@
                 </LinearGradientBrush.RelativeTransform>
                 <GradientStop Color='#00000000'
                               Offset='0' />
-                <GradientStop Color='Red' />
-                <GradientStop Offset='0.996'
+                <GradientStop x:Name='LunitariLeft'
+                              Color='Red' />
+                <GradientStop x:Name='LunitariRight'
+                              Offset='0.996'
                               Color='Red' />
                 <GradientStop Color='#00000000'
                               Offset='1' />
@@ -93,8 +97,10 @@
                 </LinearGradientBrush.RelativeTransform>
                 <GradientStop Color='#00000000'
                               Offset='0' />
-                <GradientStop Color='Black' />
-                <GradientStop Offset='0.996'
+                <GradientStop x:Name='NuitariLeft'
+                              Color='Black' />
+                <GradientStop x:Name='NuitariRight'
+                              Offset='0.996'
                               Color='Black' />
                 <GradientStop Color='#00000000'
                               Offset='1' />

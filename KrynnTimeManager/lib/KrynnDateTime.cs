@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace KrynnTimeManager.lib
 {
   [Serializable]
-  class KrynnDateTime
+  public class KrynnDateTime
   {
     public KrynnDateTime(int year, int month, int day)
     {

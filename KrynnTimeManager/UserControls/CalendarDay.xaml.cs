@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using KrynnTimeManager.lib;
 
 namespace KrynnTimeManager.UserControls
 {
@@ -20,21 +21,17 @@ namespace KrynnTimeManager.UserControls
   /// </summary>
   public partial class CalendarDay : UserControl
   {
-    public CalendarDay()
+    private KrynnDateTime Date;
+
+    public CalendarDay(KrynnDateTime krynnDateTime)
     {
       InitializeComponent();
-      DayNumber.Text = Day.ToString();
+      this.Date = krynnDateTime;
+      DayNumber.Text = Date.Day.ToString();
+      Date.CalculateMoonPhases();
+      if (Date.SolinariApex == MoonPhaseApex.FirstQuarter)
+        SolinariRight = 0.5;
     }
-
-    public static readonly DependencyProperty dayProperty = 
-      DependencyProperty.Register(
-        "Day", typeof(int), typeof(CalendarDay), 
-        new FrameworkPropertyMetadata(
-          1,
-          (FrameworkPropertyMetadataOptions.AffectsRender)
-          
-          )
-        );
 
     private void Grid_MouseEnter(object sender, MouseEventArgs e)
     {
@@ -48,10 +45,5 @@ namespace KrynnTimeManager.UserControls
       outerBorder.BorderThickness = new Thickness(1);
     }
 
-    public int Day
-    {
-      get { return (int)GetValue(dayProperty); }
-      set { SetValue(dayProperty, value); }
-    }
   }
 }

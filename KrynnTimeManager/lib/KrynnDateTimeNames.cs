@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KrynnTimeManager.lib
 {
-    class KrynnDateTimeNames
+    public class KrynnDateTimeNames
     {
         public static string getMonth(int month)
         {

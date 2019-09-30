@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KrynnTimeManager.lib
 {
-  enum MoonPhase
+  public enum MoonPhase
   {
     LowSanction,
     Waxing,
@@ -14,7 +14,7 @@ namespace KrynnTimeManager.lib
     Waning
   }
 
-  enum MoonPhaseApex
+  public enum MoonPhaseApex
   {
     FullMoon,
     LastQuarter,
