@@ -11,27 +11,61 @@
   <TabControl>
     <TabItem Header='Calendar'>
       <DockPanel>
+        
+        <Grid DockPanel.Dock='Top'
+              Background='AliceBlue'>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width='300*' />
+            <ColumnDefinition Width='65*' />
+            <ColumnDefinition Width='Auto' />
+            <ColumnDefinition Width='65*' />
+            <ColumnDefinition Width='300*' />
+          </Grid.ColumnDefinitions>
+          <TextBlock x:Name='dateTimeTest'
+                     TextWrapping='Wrap'
+                     Text='Current DateTime'
+                     Grid.Column='0' />
+          <Button Width='30'
+                  Grid.Column='1'>
+            <TextBlock Text='Last' />
+          </Button>
+          <TextBlock Text='Calendar Month Year'
+                     Grid.Column='2' />
+          <Button Width='30'
+                  Grid.Column='3'>
+            <TextBlock Text='Next' />
+          </Button>
+          <!--<Calendar DisplayMode='Year'
+                    HorizontalAlignment='Center'
+                    DisplayDate='0421-01-01'
+                    DisplayDateEnd='0426-12-12'
+                    DisplayDateStart='0421-01-01' />-->
+          <TextBlock Text='Next Event Name at This Time'
+                     Grid.Column='4'
+                     HorizontalAlignment='Right' />
+        </Grid>
         <StackPanel DockPanel.Dock='Right'
                     Width='300'
                     Background='Gray'
                     Visibility='Collapsed'></StackPanel>
-        <Grid DockPanel.Dock='Top'
-              Background='AliceBlue'>
-          <TextBlock x:Name='dateTimeTest'
-                     HorizontalAlignment='Left'
-                     TextWrapping='Wrap'
-                     Text='Current DateTime'
-                     VerticalAlignment='Top' />
-          <Calendar DisplayMode='Year'
-                    HorizontalAlignment='Center'
-                    DisplayDate='0421-01-01'
-                    DisplayDateEnd='0426-12-12'
-                    DisplayDateStart='0421-01-01' />
-          <TextBlock HorizontalAlignment='Right'
-                     VerticalAlignment='Top'
-                     Text='Next Event' />
+        <Grid Background='BlanchedAlmond'>
+          <Grid.RowDefinitions>
+            <RowDefinition Height='1*' />
+            <RowDefinition Height='4*' />
+            <RowDefinition Height='4*' />
+            <RowDefinition Height='4*' />
+            <RowDefinition Height='4*' />
+          </Grid.RowDefinitions>
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width='1*' />
+            <ColumnDefinition Width='1*' />
+            <ColumnDefinition Width='1*' />
+            <ColumnDefinition Width='1*' />
+            <ColumnDefinition Width='1*' />
+            <ColumnDefinition Width='1*' />
+            <ColumnDefinition Width='1*' />
+          </Grid.ColumnDefinitions>
         </Grid>
-        <Grid Background='BlanchedAlmond'></Grid>
       </DockPanel>
     </TabItem>
     <TabItem Header='Time'>
