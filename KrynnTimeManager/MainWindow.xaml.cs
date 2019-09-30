@@ -32,6 +32,7 @@ namespace KrynnTimeManager
 
     private void UpdateCalendar()
     {
+      CalendarDays.Children.Clear();
       currentDateTime.Text = currentDate.ToString();
       calendarMonthYear.Text = calendarDate.ToMonthYearString();
       int count = 1;
