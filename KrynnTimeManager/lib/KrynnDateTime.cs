@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace KrynnTimeManager.lib
 {
   [Serializable]
-  struct KrynnDateTime
+  class KrynnDateTime
   {
     public KrynnDateTime(int year, int month, int day)
     {
@@ -17,12 +17,8 @@ namespace KrynnTimeManager.lib
       this.Minute = 0;
       this.Hour = 0;
       this.Second = 0;
-      this.DayOfWeek = this.Day % 7;
-      if (this.Year > 421)
-        this.ACYearPattern = ((Year - 421) % 3) + 1;
-      else
-        this.ACYearPattern = (Year % 3) + 1;
-      normalizeTime();
+      NormalizeTime();
+      InitializeMoons();
 
     }
 
@@ -30,7 +26,7 @@ namespace KrynnTimeManager.lib
     {
       if (year < 421)
       {
-        throw new ArgumentOutOfRangeException("year","Year cannot be before 421 AC");
+        throw new ArgumentOutOfRangeException("year", "Year cannot be before 421 AC");
       }
       this.Year = year;
       this.Month = month;
@@ -38,14 +34,9 @@ namespace KrynnTimeManager.lib
       this.Minute = minute;
       this.Hour = hour;
       this.Second = second;
-      this.DayOfWeek = this.Day % 7;
-      if (this.Year > 421)
-        this.ACYearPattern = ((Year - 421) % 3) + 1;
-      else
-        this.ACYearPattern = (Year % 3) + 1;
-      normalizeTime();
+      NormalizeTime();
+      InitializeMoons();
     }
-
     public int Year { get; private set; }
     public int Month { get; private set; }
     public int Minute { get; private set; }
@@ -58,7 +49,7 @@ namespace KrynnTimeManager.lib
     //In Code, 421, 424, 427 = 1; 422,425,428 = 2; 423,426,429 = 3
     public int ACYearPattern { get; private set; }
 
-    private void normalizeTime()
+    private void NormalizeTime()
     {
       while (Second > 60)
       {
@@ -171,7 +162,7 @@ namespace KrynnTimeManager.lib
     {
       return new KrynnDateTime(Year, Month, Day, Hour - value, Minute, Second);
     }
-    
+
     public int DaysSince(KrynnDateTime sinceDate)
     {
       int dateOneCount = 0;
@@ -185,9 +176,77 @@ namespace KrynnTimeManager.lib
       dateTwoCount += this.Month * 28;
       return dateTwoCount - dateOneCount;
     }
-    //TODO:Moooooooon Phases
 
-    public string toDoubleDigit(int toConvert)
+    public int DaysSinceStart()
+    {
+      return DaysSince(new KrynnDateTime(421, 10, 15));
+    }
+
+    private MoonPhase[] SolinariPhases;
+    private MoonPhaseApex[] SolinariApexes;
+    public MoonPhase SolinariPhase;
+    public MoonPhaseApex SolinariApex;
+    private MoonPhase[] LunitariPhases;
+    private MoonPhaseApex[] LunitariApexes;
+    public MoonPhase LunitariPhase;
+    public MoonPhaseApex LunitariApex;
+    private MoonPhase[] NuitariPhases;
+    private MoonPhaseApex[] NuitariApexes;
+    public MoonPhase NuitariPhase;
+    public MoonPhaseApex NuitariApex;
+
+    private void InitializeMoons()
+    {
+      SolinariPhases = new MoonPhase[36];
+      int count = 0;
+      for (int i = 0; i < 4; i++)
+      {
+        for (int j = 0; j < 9; j++)
+        {
+          SolinariPhases[count] = (MoonPhase)i;
+          SolinariApexes[count] = (MoonPhaseApex)i;
+          count++;
+        }
+      }
+
+      LunitariPhases = new MoonPhase[28];
+      count = 0;
+      for (int i = 0; i < 4; i++)
+      {
+        for (int j = 0; j < 7; j++)
+        {
+          LunitariPhases[count] = (MoonPhase)i;
+          LunitariApexes[count] = (MoonPhaseApex)i;
+          count++;
+        }
+      }
+
+      NuitariPhases = new MoonPhase[8];
+      count = 0;
+      for (int i = 0; i < 4; i++)
+      {
+        for (int j = 0; j < 2; j++)
+        {
+          NuitariPhases[count] = (MoonPhase)i;
+          NuitariApexes[count] = (MoonPhaseApex)i;
+          count++;
+        }
+      }
+    }
+
+    public void CalculateMoonPhases()
+    {
+      int days = DaysSinceStart();
+      SolinariPhase = SolinariPhases[(22 + days) % 36];
+      SolinariApex = SolinariApexes[days % 36];
+      LunitariPhase = LunitariPhases[(17 + days) % 28];
+      LunitariApex = LunitariApexes[days % 28];
+      NuitariPhase = NuitariPhases[(4 + days) % 8];
+      NuitariApex = NuitariApexes[days % 8];
+    }
+
+
+    public string ToDoubleDigit(int toConvert)
     {
       if (toConvert.ToString().Length == 1)
         return "0" + toConvert.ToString();
@@ -205,9 +264,9 @@ namespace KrynnTimeManager.lib
       retString += this.Year.ToString() + " AC. Time: ";
 
       //Time
-      retString += toDoubleDigit(this.Hour) + ":";
-      retString += toDoubleDigit(this.Minute) + ":";
-      retString += toDoubleDigit(this.Second) + " ";
+      retString += ToDoubleDigit(this.Hour) + ":";
+      retString += ToDoubleDigit(this.Minute) + ":";
+      retString += ToDoubleDigit(this.Second) + " ";
 
       return retString;
     }

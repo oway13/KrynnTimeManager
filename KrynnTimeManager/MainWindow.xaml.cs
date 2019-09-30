@@ -36,8 +36,8 @@ namespace KrynnTimeManager
       CalendarDays.Children.Clear();
       currentDateTime.Text = currentDate.ToString();
       calendarMonthYear.Text = calendarDate.ToMonthYearString();
-      nextEventText.Text = currentDate.DaysSince(new KrynnDateTime(421, 1, 1)).ToString();
-      if(calendarDate.Year == 421 && calendarDate.Month == 1)
+      nextEventText.Text = "Days since the end of War of Souls: "+currentDate.DaysSinceStart().ToString();
+      if(calendarDate.Year == 421 && calendarDate.Month == 10)
       {
         backOneMonth.IsEnabled = false;
       }
