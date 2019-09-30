@@ -240,12 +240,25 @@ namespace KrynnTimeManager.lib
     public void CalculateMoonPhases()
     {
       int days = DaysSinceStart();
-      SolinariPhase = SolinariPhases[(22 + days) % 36];
-      SolinariApex = SolinariApexes[days % 36];
-      LunitariPhase = LunitariPhases[(17 + days) % 28];
-      LunitariApex = LunitariApexes[days % 28];
-      NuitariPhase = NuitariPhases[(4 + days) % 8];
-      NuitariApex = NuitariApexes[days % 8];
+      if(days < 0)
+      {
+        SolinariApex = SolinariApexes[22 + days];
+        SolinariPhase = MoonPhase.LowSanction;
+        NuitariPhase = MoonPhase.LowSanction;
+        LunitariPhase = MoonPhase.LowSanction;
+        NuitariApex = MoonPhaseApex.NewMoon;
+        LunitariApex = MoonPhaseApex.NewMoon;
+      }
+      else
+      {
+        SolinariPhase = SolinariPhases[(22 + days) % 36];
+        SolinariApex = SolinariApexes[days % 36];
+        LunitariPhase = LunitariPhases[(17 + days) % 28];
+        LunitariApex = LunitariApexes[days % 28];
+        NuitariPhase = NuitariPhases[(4 + days) % 8];
+        NuitariApex = NuitariApexes[days % 8];
+      }
+      
     }
 
 
