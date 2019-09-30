@@ -9,24 +9,98 @@
              d:DesignWidth="100">
   <Grid MouseEnter='Grid_MouseEnter'
         MouseLeave='Grid_MouseLeave'>
-    <Border x:Name='outerBorder' BorderBrush='Black'
+    <Border x:Name='outerBorder'
+            BorderBrush='Black'
             BorderThickness='1'>
       <StackPanel Background='White'>
-        <TextBlock HorizontalAlignment='Left'
+        <TextBlock x:Name='DayNumber'
+                   HorizontalAlignment='Left'
                    Text='1' />
         <TextBlock Text='Event Name'
                    HorizontalAlignment='Center' />
         <StackPanel Orientation='Horizontal'
                     HorizontalAlignment='Center'>
-          <Ellipse Fill='LightGray'
-                   Width='30'
-                   Height='30' />
-          <Ellipse Fill='Red'
-                   Width='30'
-                   Height='30' />
-          <Ellipse Fill='Black'
-                   Width='30'
-                   Height='30' />
+          <Ellipse Width='40'
+                   Height='40'>
+            <Ellipse.Fill>
+              <LinearGradientBrush EndPoint='0.5,1'
+                                   StartPoint='0.5,0'>
+                <LinearGradientBrush.RelativeTransform>
+                  <TransformGroup>
+                    <ScaleTransform CenterY='0.5'
+                                    CenterX='0.5' />
+                    <SkewTransform CenterY='0.5'
+                                   CenterX='0.5' />
+                    <RotateTransform Angle='90'
+                                     CenterY='0.5'
+                                     CenterX='0.5' />
+                    <TranslateTransform />
+                  </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color='#00000000'
+                              Offset='0' />
+                <GradientStop Color='LightGray' />
+                <GradientStop Offset='0.996'
+                              Color='LightGray' />
+                <GradientStop Color='#00000000'
+                              Offset='1' />
+              </LinearGradientBrush>
+            </Ellipse.Fill>
+          </Ellipse>
+          <Ellipse Width='25'
+                   Height='25'>
+            <Ellipse.Fill>
+              <LinearGradientBrush EndPoint='0.5,1'
+                                   StartPoint='0.5,0'>
+                <LinearGradientBrush.RelativeTransform>
+                  <TransformGroup>
+                    <ScaleTransform CenterY='0.5'
+                                    CenterX='0.5' />
+                    <SkewTransform CenterY='0.5'
+                                   CenterX='0.5' />
+                    <RotateTransform Angle='90'
+                                     CenterY='0.5'
+                                     CenterX='0.5' />
+                    <TranslateTransform />
+                  </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color='#00000000'
+                              Offset='0' />
+                <GradientStop Color='Red' />
+                <GradientStop Offset='0.996'
+                              Color='Red' />
+                <GradientStop Color='#00000000'
+                              Offset='1' />
+              </LinearGradientBrush>
+            </Ellipse.Fill>
+          </Ellipse>
+          <Ellipse Width='15'
+                   Height='15'>
+            <Ellipse.Fill>
+              <LinearGradientBrush EndPoint='0.5,1'
+                                   StartPoint='0.5,0'>
+                <LinearGradientBrush.RelativeTransform>
+                  <TransformGroup>
+                    <ScaleTransform CenterY='0.5'
+                                    CenterX='0.5' />
+                    <SkewTransform CenterY='0.5'
+                                   CenterX='0.5' />
+                    <RotateTransform Angle='90'
+                                     CenterY='0.5'
+                                     CenterX='0.5' />
+                    <TranslateTransform />
+                  </TransformGroup>
+                </LinearGradientBrush.RelativeTransform>
+                <GradientStop Color='#00000000'
+                              Offset='0' />
+                <GradientStop Color='Black' />
+                <GradientStop Offset='0.996'
+                              Color='Black' />
+                <GradientStop Color='#00000000'
+                              Offset='1' />
+              </LinearGradientBrush>
+            </Ellipse.Fill>
+          </Ellipse>
         </StackPanel>
       </StackPanel>
     </Border>

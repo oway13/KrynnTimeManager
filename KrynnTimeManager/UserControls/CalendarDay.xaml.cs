@@ -15,26 +15,43 @@ using System.Windows.Shapes;
 
 namespace KrynnTimeManager.UserControls
 {
-    /// <summary>
-    /// Interaction logic for CalendarDay.xaml
-    /// </summary>
-    public partial class CalendarDay : UserControl
+  /// <summary>
+  /// Interaction logic for CalendarDay.xaml
+  /// </summary>
+  public partial class CalendarDay : UserControl
+  {
+    public CalendarDay()
     {
-        public CalendarDay()
-        {
-            InitializeComponent();
-        }
-
-        private void Grid_MouseEnter(object sender, MouseEventArgs e)
-        {
-            outerBorder.BorderBrush = Brushes.Blue;
-            outerBorder.BorderThickness = new Thickness(2);
-        }
-
-        private void Grid_MouseLeave(object sender, MouseEventArgs e)
-        {
-            outerBorder.BorderBrush = Brushes.Black;
-            outerBorder.BorderThickness = new Thickness(1);
-        }
+      InitializeComponent();
+      DayNumber.Text = Day.ToString();
     }
+
+    public static readonly DependencyProperty dayProperty = 
+      DependencyProperty.Register(
+        "Day", typeof(int), typeof(CalendarDay), 
+        new FrameworkPropertyMetadata(
+          1,
+          (FrameworkPropertyMetadataOptions.AffectsRender)
+          
+          )
+        );
+
+    private void Grid_MouseEnter(object sender, MouseEventArgs e)
+    {
+      outerBorder.BorderBrush = Brushes.Blue;
+      outerBorder.BorderThickness = new Thickness(2);
+    }
+
+    private void Grid_MouseLeave(object sender, MouseEventArgs e)
+    {
+      outerBorder.BorderBrush = Brushes.Black;
+      outerBorder.BorderThickness = new Thickness(1);
+    }
+
+    public int Day
+    {
+      get { return (int)GetValue(dayProperty); }
+      set { SetValue(dayProperty, value); }
+    }
+  }
 }
