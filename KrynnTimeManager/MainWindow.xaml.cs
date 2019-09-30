@@ -22,11 +22,18 @@ namespace KrynnTimeManager
   /// </summary>
   public partial class MainWindow : Window
   {
-    private lib.KrynnDateTime startDate = new lib.KrynnDateTime(423, 1, 12);
+    private KrynnDateTime currentDate = new lib.KrynnDateTime(423, 1, 12);
+    private KrynnDateTime calendarDate = new KrynnDateTime(423, 1, 1);
     public MainWindow()
     {
       InitializeComponent();
-      dateTimeTest.Text = startDate.ToString();
+      UpdateCalendar();
+    }
+
+    private void UpdateCalendar()
+    {
+      currentDateTime.Text = currentDate.ToString();
+      calendarMonthYear.Text = calendarDate.ToMonthYearString();
       int count = 1;
       for (int i = 1; i < 5; i++)
       {
@@ -41,6 +48,18 @@ namespace KrynnTimeManager
           Grid.SetColumn(dayToAdd, j);
         }
       }
+    }
+
+    private void BackOneMonth_Click(object sender, RoutedEventArgs e)
+    {
+      calendarDate = calendarDate.SubtractMonths(1);
+      UpdateCalendar();
+    }
+
+    private void ForwardOneMonth_Click(object sender, RoutedEventArgs e)
+    {
+      calendarDate = calendarDate.AddMonths(1);
+      UpdateCalendar();
     }
   }
 }

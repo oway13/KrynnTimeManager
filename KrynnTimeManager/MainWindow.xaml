@@ -16,23 +16,30 @@
               Background='AliceBlue'>
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width='300*' />
-            <ColumnDefinition Width='65*' />
-            <ColumnDefinition Width='Auto' />
-            <ColumnDefinition Width='65*' />
+            <ColumnDefinition Width='55*' />
+            <ColumnDefinition Width='90*' />
+            <ColumnDefinition Width='55*' />
             <ColumnDefinition Width='300*' />
           </Grid.ColumnDefinitions>
-          <TextBlock x:Name='dateTimeTest'
+          <TextBlock x:Name='currentDateTime'
                      TextWrapping='Wrap'
                      Text='Current DateTime'
                      Grid.Column='0' />
-          <Button Width='30'
-                  Grid.Column='1'>
-            <TextBlock Text='Last' />
+          <Button x:Name='backOneMonth'
+                  Width='30'
+                  Grid.Column='1'
+                  Click='BackOneMonth_Click'>
+            <TextBlock 
+                       Text='Last' />
           </Button>
-          <TextBlock Text='Calendar Month Year'
-                     Grid.Column='2' />
-          <Button Width='30'
-                  Grid.Column='3'>
+          <TextBlock x:Name='calendarMonthYear'
+                     Text='Calendar Month Year'
+                     Grid.Column='2'
+                     HorizontalAlignment='Center'/>
+          <Button x:Name='forwardOneMonth'
+                  Width='30'
+                  Grid.Column='3'
+                  Click='ForwardOneMonth_Click'>
             <TextBlock Text='Next' />
           </Button>
           <!--<Calendar DisplayMode='Year'
