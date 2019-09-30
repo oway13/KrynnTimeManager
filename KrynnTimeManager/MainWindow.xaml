@@ -47,7 +47,8 @@
                     DisplayDate='0421-01-01'
                     DisplayDateEnd='0426-12-12'
                     DisplayDateStart='0421-01-01' />-->
-          <TextBlock Text='Next Event Name at This Time'
+          <TextBlock x:Name='nextEventText'
+                     Text='Next Event Name at This Time'
                      Grid.Column='4'
                      HorizontalAlignment='Right' />
         </Grid>

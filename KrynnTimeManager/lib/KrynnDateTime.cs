@@ -18,12 +18,20 @@ namespace KrynnTimeManager.lib
       this.Hour = 0;
       this.Second = 0;
       this.DayOfWeek = this.Day % 7;
+      if (this.Year > 421)
+        this.ACYearPattern = ((Year - 421) % 3) + 1;
+      else
+        this.ACYearPattern = (Year % 3) + 1;
       normalizeTime();
 
     }
 
     public KrynnDateTime(int year, int month, int day, int hour, int minute, int second)
     {
+      if (year < 421)
+      {
+        throw new ArgumentOutOfRangeException("year","Year cannot be before 421 AC");
+      }
       this.Year = year;
       this.Month = month;
       this.Day = day;
@@ -31,6 +39,10 @@ namespace KrynnTimeManager.lib
       this.Hour = hour;
       this.Second = second;
       this.DayOfWeek = this.Day % 7;
+      if (this.Year > 421)
+        this.ACYearPattern = ((Year - 421) % 3) + 1;
+      else
+        this.ACYearPattern = (Year % 3) + 1;
       normalizeTime();
     }
 
@@ -41,6 +53,10 @@ namespace KrynnTimeManager.lib
     public int Day { get; private set; }
     public int Second { get; private set; }
     public int DayOfWeek { get; private set; }
+
+    //In PDF, 421, 424, 427 = 3; 422,425,428 = 1; 423,426,429 = 2
+    //In Code, 421, 424, 427 = 1; 422,425,428 = 2; 423,426,429 = 3
+    public int ACYearPattern { get; private set; }
 
     private void normalizeTime()
     {
@@ -100,6 +116,10 @@ namespace KrynnTimeManager.lib
         this.Year--;
       }
       this.DayOfWeek = this.Day % 7;
+      if (this.Year > 421)
+        this.ACYearPattern = ((Year - 421) % 3) + 1;
+      else
+        this.ACYearPattern = (Year % 3) + 1;
     }
 
     public KrynnDateTime AddDays(int value)
@@ -150,6 +170,20 @@ namespace KrynnTimeManager.lib
     public KrynnDateTime SubtractHours(int value)
     {
       return new KrynnDateTime(Year, Month, Day, Hour - value, Minute, Second);
+    }
+    
+    public int DaysSince(KrynnDateTime sinceDate)
+    {
+      int dateOneCount = 0;
+      dateOneCount += sinceDate.Day;
+      dateOneCount += sinceDate.Year * 336;
+      dateOneCount += sinceDate.Month * 28;
+
+      int dateTwoCount = 0;
+      dateTwoCount += this.Day;
+      dateTwoCount += this.Year * 336;
+      dateTwoCount += this.Month * 28;
+      return dateTwoCount - dateOneCount;
     }
     //TODO:Moooooooon Phases
 

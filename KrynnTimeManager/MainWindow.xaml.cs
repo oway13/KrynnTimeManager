@@ -22,11 +22,12 @@ namespace KrynnTimeManager
   /// </summary>
   public partial class MainWindow : Window
   {
-    private KrynnDateTime currentDate = new lib.KrynnDateTime(423, 1, 12);
-    private KrynnDateTime calendarDate = new KrynnDateTime(423, 1, 1);
+    private KrynnDateTime currentDate = new KrynnDateTime(423, 1, 12);
+    private KrynnDateTime calendarDate;
     public MainWindow()
     {
       InitializeComponent();
+      calendarDate = new KrynnDateTime(currentDate.Year, currentDate.Month, 1);
       UpdateCalendar();
     }
 
@@ -35,6 +36,15 @@ namespace KrynnTimeManager
       CalendarDays.Children.Clear();
       currentDateTime.Text = currentDate.ToString();
       calendarMonthYear.Text = calendarDate.ToMonthYearString();
+      nextEventText.Text = currentDate.DaysSince(new KrynnDateTime(421, 1, 1)).ToString();
+      if(calendarDate.Year == 421 && calendarDate.Month == 1)
+      {
+        backOneMonth.IsEnabled = false;
+      }
+      else
+      {
+        backOneMonth.IsEnabled = true;
+      }
       int count = 1;
       for (int i = 1; i < 5; i++)
       {
