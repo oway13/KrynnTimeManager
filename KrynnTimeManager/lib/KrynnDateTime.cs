@@ -198,6 +198,7 @@ namespace KrynnTimeManager.lib
     private void InitializeMoons()
     {
       SolinariPhases = new MoonPhase[36];
+      SolinariApexes = new MoonPhaseApex[36];
       int count = 0;
       for (int i = 0; i < 4; i++)
       {
@@ -210,6 +211,7 @@ namespace KrynnTimeManager.lib
       }
 
       LunitariPhases = new MoonPhase[28];
+      LunitariApexes = new MoonPhaseApex[28];
       count = 0;
       for (int i = 0; i < 4; i++)
       {
@@ -222,6 +224,7 @@ namespace KrynnTimeManager.lib
       }
 
       NuitariPhases = new MoonPhase[8];
+      NuitariApexes = new MoonPhaseApex[8];
       count = 0;
       for (int i = 0; i < 4; i++)
       {
