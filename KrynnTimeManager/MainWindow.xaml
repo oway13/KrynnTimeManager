@@ -16,7 +16,8 @@
         <Grid DockPanel.Dock='Top'
               Background='AliceBlue'>
           <Grid.ColumnDefinitions>
-            <ColumnDefinition Width='300*' />
+            <ColumnDefinition Width='200*' />
+            <ColumnDefinition Width='100*' />
             <ColumnDefinition Width='55*' />
             <ColumnDefinition Width='90*' />
             <ColumnDefinition Width='55*' />
@@ -26,20 +27,24 @@
                      TextWrapping='Wrap'
                      Text='Current DateTime'
                      Grid.Column='0' />
+          <Button x:Name='GoToCurrentDateTime'
+                  Content='Go to Current Month'
+                  Grid.Column='1'
+                  Click='GoToCurrentDateTime_Click'/>
           <Button x:Name='backOneMonth'
                   Width='30'
-                  Grid.Column='1'
+                  Grid.Column='2'
                   Click='BackOneMonth_Click'>
             <TextBlock 
                        Text='Last' />
           </Button>
           <TextBlock x:Name='calendarMonthYear'
                      Text='Calendar Month Year'
-                     Grid.Column='2'
+                     Grid.Column='3'
                      HorizontalAlignment='Center'/>
           <Button x:Name='forwardOneMonth'
                   Width='30'
-                  Grid.Column='3'
+                  Grid.Column='4'
                   Click='ForwardOneMonth_Click'>
             <TextBlock Text='Next' />
           </Button>
@@ -50,7 +55,7 @@
                     DisplayDateStart='0421-01-01' />-->
           <TextBlock x:Name='nextEventText'
                      Text='Next Event Name at This Time'
-                     Grid.Column='4'
+                     Grid.Column='5'
                      HorizontalAlignment='Right' />
         </Grid>
         <StackPanel DockPanel.Dock='Right'

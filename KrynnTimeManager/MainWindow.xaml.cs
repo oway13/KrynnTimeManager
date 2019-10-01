@@ -131,6 +131,11 @@ namespace KrynnTimeManager
       calendarDate = calendarDate.AddMonths(1);
       UpdateCalendar();
     }
+    private void GoToCurrentDateTime_Click(object sender, RoutedEventArgs e)
+    {
+      calendarDate = currentDate;
+      UpdateCalendar();
+    }
 
     //Time Changing Buttons
     private void AddSixSeconds_Click(object sender, RoutedEventArgs e)
@@ -193,5 +198,7 @@ namespace KrynnTimeManager
         UpdateCalendar();
       }
     }
+
+    
   }
 }
