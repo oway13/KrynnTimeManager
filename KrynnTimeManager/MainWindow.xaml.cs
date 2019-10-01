@@ -40,6 +40,7 @@ namespace KrynnTimeManager
       UpdateCalendar();
     }
 
+    //Calendar Updating Functions
     private void AddDayNames()
     {
       CalendarDays.Children.Add(firstDay);
@@ -103,8 +104,9 @@ namespace KrynnTimeManager
     private void UpdateCalendar()
     {
       CalendarDays.Children.Clear();
-      currentDateTime.Text = currentDate.ToString();
       calendarMonthYear.Text = calendarDate.ToMonthYearString();
+      currentDateTime.Text = currentDate.ToString();
+      CurrentDTText.Text = currentDate.ToString();
       if (calendarDate.Year == 421 && calendarDate.Month == 10)
       {
         backOneMonth.IsEnabled = false;
@@ -118,16 +120,78 @@ namespace KrynnTimeManager
       AddCalendarDays();
     }
 
+    //Calendar Changing Buttons
     private void BackOneMonth_Click(object sender, RoutedEventArgs e)
     {
       calendarDate = calendarDate.SubtractMonths(1);
       UpdateCalendar();
     }
-
     private void ForwardOneMonth_Click(object sender, RoutedEventArgs e)
     {
       calendarDate = calendarDate.AddMonths(1);
       UpdateCalendar();
+    }
+
+    //Time Changing Buttons
+    private void AddSixSeconds_Click(object sender, RoutedEventArgs e)
+    {
+      AddUpToOneDay(6);
+    }
+    private void AddOneMinute_Click(object sender, RoutedEventArgs e)
+    {
+      AddUpToOneDay(60);
+    }
+    private void AddTenMinute_Click(object sender, RoutedEventArgs e)
+    {
+      AddUpToOneDay(600);
+    }
+    private void AddThirtyMinutes_Click(object sender, RoutedEventArgs e)
+    {
+      AddUpToOneDay(1800);
+    }
+    private void AddOneHour_Click(object sender, RoutedEventArgs e)
+    {
+      AddUpToOneDay(3600);
+    }
+    private void AddEightHours_Click(object sender, RoutedEventArgs e)
+    {
+      AddUpToOneDay(8*3600);
+    }
+    private void AddOneDay_Click(object sender, RoutedEventArgs e)
+    {
+      AddUpToOneDay(24*3600);
+    }
+    private void AddOneWeek_Click(object sender, RoutedEventArgs e)
+    {
+      currentDate = currentDate.AddDays(7);
+      currentDateTime.Text = currentDate.ToString();
+      CurrentDTText.Text = currentDate.ToString();
+    }
+    private void AddOneMonth_Click(object sender, RoutedEventArgs e)
+    {
+      currentDate = currentDate.AddMonths(1);
+      currentDateTime.Text = currentDate.ToString();
+      CurrentDTText.Text = currentDate.ToString();
+    }
+    private void AddOneYear_Click(object sender, RoutedEventArgs e)
+    {
+      currentDate = currentDate.AddYears(1);
+      currentDateTime.Text = currentDate.ToString();
+      CurrentDTText.Text = currentDate.ToString();
+    }
+    private void AddUpToOneDay(int seconds)
+    {
+      currentDate = currentDate.AddSeconds(seconds);
+      currentDateTime.Text = currentDate.ToString();
+      CurrentDTText.Text = currentDate.ToString();
+    }
+
+    private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+      if (CalendarTab.IsSelected)
+      {
+        UpdateCalendar();
+      }
     }
   }
 }

@@ -8,8 +8,9 @@
         Title="MainWindow"
         Height="650"
         Width="1200">
-  <TabControl>
-    <TabItem Header='Calendar'>
+  <TabControl SelectionChanged='TabControl_SelectionChanged'>
+    <TabItem x:Name='CalendarTab'
+             Header='Calendar'>
       <DockPanel>
         
         <Grid DockPanel.Dock='Top'
@@ -79,7 +80,46 @@
       </DockPanel>
     </TabItem>
     <TabItem Header='Time'>
-      <Grid Background='#FFE5E5E5' />
+      <DockPanel Background='#FFE5E5E5'>
+        <StackPanel DockPanel.Dock='Right'>
+          <Button x:Name='AddOneDay'
+                  Content='Add 1 Day'
+                  Click='AddOneDay_Click' />
+          <Button x:Name='AddOneWeek'
+                  Content='Add 1 Week'
+                  Click='AddOneWeek_Click' />
+          <Button x:Name='AddOneMonth'
+                  Content='Add 1 Month'
+                  Click='AddOneMonth_Click' />
+          <Button x:Name='AddOneYear'
+                  Content='Add 1 Year'
+                  Click='AddOneYear_Click' />
+        </StackPanel>
+        
+        <StackPanel DockPanel.Dock='Left'>
+          <Button x:Name='AddSixSeconds'
+                  Content='Add 6 Seconds'
+                  Click='AddSixSeconds_Click'/>
+          <Button x:Name='AddOneMinute'
+                  Content='Add 1 Minute'
+                  Click='AddOneMinute_Click'/>
+          <Button x:Name='AddTenMinute'
+                  Content='Add 10 Minutes'
+                  Click='AddTenMinute_Click' />
+          <Button x:Name='AddThirtyMinutes'
+                  Content='Add 30 Minutes'
+                  Click='AddThirtyMinutes_Click' />
+          <Button x:Name='AddOneHour'
+                  Content='Add 1 Hour'
+                  Click='AddOneHour_Click' />
+          <Button x:Name='AddEightHours'
+                  Content='Add 8 Hours'
+                  Click='AddEightHours_Click' />
+        </StackPanel>
+        <StackPanel>
+          <TextBlock x:Name='CurrentDTText' />
+        </StackPanel>
+      </DockPanel>
     </TabItem>
     <TabItem Header='Campaign'>
       <Grid Background='#FFE5E5E5' />

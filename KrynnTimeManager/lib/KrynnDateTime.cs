@@ -51,7 +51,7 @@ namespace KrynnTimeManager.lib
 
     private void NormalizeTime()
     {
-      while (Second > 60)
+      while (Second > 59)
       {
         this.Second -= 60;
         this.Minute++;
@@ -63,7 +63,7 @@ namespace KrynnTimeManager.lib
         this.Minute--;
       }
 
-      while (Minute > 60)
+      while (Minute > 59)
       {
         this.Minute -= 60;
         this.Hour++;
@@ -74,7 +74,7 @@ namespace KrynnTimeManager.lib
         this.Hour--;
       }
 
-      while (Hour > 24)
+      while (Hour > 23)
       {
         this.Hour -= 24;
         this.Day++;

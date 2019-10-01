@@ -15,7 +15,7 @@ namespace KrynnTimeManager.lib
 
         public static string getDayOfWeek(int dayOfWeek)
         {
-            return ErgothianDaysOfWeek[dayOfWeek-1];
+            return ErgothianDaysOfWeek[dayOfWeek];
         }
 
         private static readonly String[] ErgothianMonthsOfYear = new string[]
