@@ -31,12 +31,24 @@ namespace KrynnTimeManager.UserControls
       EventString.Text = Name;
       DayNumber.Text = Date.Day.ToString();
       DisplayMoons();
-        
+
     }
 
     private void DisplayMoons()
     {
+      Dictionary<MoonPhase, string> phaseDict = new Dictionary<MoonPhase, string>()
+      {
+        {MoonPhase.HighSanction, "High"},
+        {MoonPhase.LowSanction, "Low"},
+        {MoonPhase.Waning, "Wane"},
+        {MoonPhase.Waxing, "Wax"}
+      };
       Date.CalculateMoonPhases();
+
+      SolPhase.Text = phaseDict[Date.SolinariPhase];
+      LunPhase.Text = phaseDict[Date.LunitariPhase];
+      NuiPhase.Text = phaseDict[Date.NuitariPhase];
+
       if (Date.SolinariApex == MoonPhaseApex.FirstQuarter)
       {
         SolinariXLeft.Offset = 0.496;
