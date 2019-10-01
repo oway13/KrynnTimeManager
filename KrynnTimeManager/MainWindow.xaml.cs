@@ -36,8 +36,7 @@ namespace KrynnTimeManager
       CalendarDays.Children.Clear();
       currentDateTime.Text = currentDate.ToString();
       calendarMonthYear.Text = calendarDate.ToMonthYearString();
-      nextEventText.Text = "Days since the end of War of Souls: "+currentDate.DaysSinceStart().ToString();
-      if(calendarDate.Year == 421 && calendarDate.Month == 10)
+      if (calendarDate.Year == 421 && calendarDate.Month == 10)
       {
         backOneMonth.IsEnabled = false;
       }
@@ -57,6 +56,22 @@ namespace KrynnTimeManager
           Grid.SetColumn(dayToAdd, j);
         }
       }
+      if (calendarDate.Month == currentDate.Month)
+      {
+        string dateName = currentDate.ToCDName();
+        nextEventText.Text = dateName;
+        CalendarDay currentDay = UIHelper.FindChild<CalendarDay>(CalendarDays, dateName);
+        try
+        {
+          currentDay.CurrentDayBorder.BorderBrush = Brushes.Orange;
+          currentDay.CurrentDayBorder.BorderThickness = new Thickness(2);
+        }
+        catch (Exception e)
+        {
+          Console.WriteLine(e.Message);
+        }
+      }
+
     }
 
     private void BackOneMonth_Click(object sender, RoutedEventArgs e)

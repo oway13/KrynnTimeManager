@@ -8,11 +8,14 @@
              d:DesignHeight="100"
              d:DesignWidth="100">
   <Grid MouseEnter='Grid_MouseEnter'
-        MouseLeave='Grid_MouseLeave'>
+        MouseLeave='Grid_MouseLeave'
+        Background='White'>
     <Border x:Name='outerBorder'
-            BorderBrush='Black'
-            BorderThickness='1'>
-      <StackPanel Background='White'>
+      BorderBrush='Black'
+      BorderThickness='1'>
+    <Border x:Name='CurrentDayBorder'
+            BorderThickness='0'>
+      <StackPanel >
         <TextBlock x:Name='DayNumber'
                    HorizontalAlignment='Left'
                    Text='1' />
@@ -117,6 +120,7 @@
           </Ellipse>
         </StackPanel>
       </StackPanel>
+    </Border>
     </Border>
   </Grid>
 </UserControl>

@@ -27,6 +27,8 @@ namespace KrynnTimeManager.UserControls
     {
       InitializeComponent();
       this.Date = krynnDateTime;
+      Name = Date.ToCDName();
+      EventString.Text = Name;
       DayNumber.Text = Date.Day.ToString();
       DisplayMoons();
         

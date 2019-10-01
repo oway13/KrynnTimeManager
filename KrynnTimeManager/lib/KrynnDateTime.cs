@@ -294,5 +294,10 @@ namespace KrynnTimeManager.lib
       retString += this.Year.ToString() + " AC";
       return retString;
     }
+
+    public string ToCDName()
+    {
+      return "CD" + Year.ToString() + Month.ToString() + Day.ToString();
+    }
   }
 }
