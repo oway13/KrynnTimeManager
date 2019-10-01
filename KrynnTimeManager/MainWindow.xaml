@@ -74,20 +74,7 @@
             <ColumnDefinition Width='1*' />
             <ColumnDefinition Width='1*' />
           </Grid.ColumnDefinitions>
-          <TextBlock Text='Giledai'
-                     Grid.Column='0'/>
-          <TextBlock Text='Luindai'
-                     Grid.Column='1' />
-          <TextBlock Text='Nuindai'
-                     Grid.Column='2' />
-          <TextBlock Text='Soldai'
-                     Grid.Column='3' />
-          <TextBlock Text='Manthus'
-                     Grid.Column='4' />
-          <TextBlock Text='Shinarai'
-                     Grid.Column='5' />
-          <TextBlock Text='Boreadai'
-                     Grid.Column='6' />
+          
         </Grid>
       </DockPanel>
     </TabItem>

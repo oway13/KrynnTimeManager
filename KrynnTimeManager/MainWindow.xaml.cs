@@ -24,6 +24,15 @@ namespace KrynnTimeManager
   {
     private KrynnDateTime currentDate = new KrynnDateTime(423, 1, 12);
     private KrynnDateTime calendarDate;
+
+    TextBlock firstDay = new TextBlock() { Text = "Giledai" };
+    TextBlock secondDay = new TextBlock() { Text = "Luindai" };
+    TextBlock thirdDay = new TextBlock() { Text = "Nuindai" };
+    TextBlock fourthDay = new TextBlock() { Text = "Soldai" };
+    TextBlock fifthDay = new TextBlock() { Text = "Manthus" };
+    TextBlock sixthDay = new TextBlock() { Text = "Shinarai" };
+    TextBlock seventhDay = new TextBlock() { Text = "Boreadai" };
+
     public MainWindow()
     {
       InitializeComponent();
@@ -31,19 +40,38 @@ namespace KrynnTimeManager
       UpdateCalendar();
     }
 
-    private void UpdateCalendar()
+    private void AddDayNames()
     {
-      CalendarDays.Children.Clear();
-      currentDateTime.Text = currentDate.ToString();
-      calendarMonthYear.Text = calendarDate.ToMonthYearString();
-      if (calendarDate.Year == 421 && calendarDate.Month == 10)
-      {
-        backOneMonth.IsEnabled = false;
-      }
-      else
-      {
-        backOneMonth.IsEnabled = true;
-      }
+      CalendarDays.Children.Add(firstDay);
+      CalendarDays.Children.Add(secondDay);
+      CalendarDays.Children.Add(thirdDay);
+      CalendarDays.Children.Add(fourthDay);
+      CalendarDays.Children.Add(fifthDay);
+      CalendarDays.Children.Add(sixthDay);
+      CalendarDays.Children.Add(seventhDay);
+      Grid.SetRow(firstDay, 0);
+      Grid.SetColumn(firstDay, 0);
+
+      Grid.SetRow(secondDay, 0);
+      Grid.SetColumn(secondDay, 1);
+
+      Grid.SetRow(thirdDay, 0);
+      Grid.SetColumn(thirdDay, 2);
+
+      Grid.SetRow(fourthDay, 0);
+      Grid.SetColumn(fourthDay, 3);
+
+      Grid.SetRow(fifthDay, 0);
+      Grid.SetColumn(fifthDay, 4);
+
+      Grid.SetRow(sixthDay, 0);
+      Grid.SetColumn(sixthDay, 5);
+
+      Grid.SetRow(seventhDay, 0);
+      Grid.SetColumn(seventhDay, 6);
+    }
+    private void AddCalendarDays()
+    {
       int count = 1;
       for (int i = 1; i < 5; i++)
       {
@@ -71,7 +99,23 @@ namespace KrynnTimeManager
           Console.WriteLine(e.Message);
         }
       }
+    }
+    private void UpdateCalendar()
+    {
+      CalendarDays.Children.Clear();
+      currentDateTime.Text = currentDate.ToString();
+      calendarMonthYear.Text = calendarDate.ToMonthYearString();
+      if (calendarDate.Year == 421 && calendarDate.Month == 10)
+      {
+        backOneMonth.IsEnabled = false;
+      }
+      else
+      {
+        backOneMonth.IsEnabled = true;
+      }
 
+      AddDayNames();
+      AddCalendarDays();
     }
 
     private void BackOneMonth_Click(object sender, RoutedEventArgs e)
