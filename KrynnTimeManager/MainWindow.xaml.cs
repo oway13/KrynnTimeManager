@@ -84,7 +84,7 @@ namespace KrynnTimeManager
           Grid.SetColumn(dayToAdd, j);
         }
       }
-      if (calendarDate.Month == currentDate.Month)
+      if (calendarDate.Month == currentDate.Month && calendarDate.Year == currentDate.Year)
       {
         string dateName = currentDate.ToCDName();
         nextEventText.Text = dateName;
