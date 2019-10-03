@@ -36,13 +36,14 @@ namespace KrynnTimeManager.lib
 
         private static readonly String[] ErgothianDaysOfWeek = new string[] 
         {
+            "Boreadai",
             "Gileadai",
             "Luindai",
             "Nuindai",
             "Soldai",
             "Manthus",
-            "Shinarai",
-            "Boreadai",
+            "Shinarai"
+            
 
         };
     }
