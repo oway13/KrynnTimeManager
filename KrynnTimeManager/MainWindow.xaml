@@ -106,6 +106,20 @@
                     Content='Add 1 Year'
                     Click='AddOneYear_Click' />
           </StackPanel>
+          <StackPanel DockPanel.Dock='Right'>
+            <Button x:Name='SubOneDay'
+                    Content='Subtract 1 Day'
+                    Click='SubOneDay_Click' />
+            <Button x:Name='SubOneWeek'
+                    Content='Subtract 1 Week'
+                    Click='SubOneWeek_Click' />
+            <Button x:Name='SubOneMonth'
+                    Content='Subtract 1 Month'
+                    Click='SubOneMonth_Click' />
+            <Button x:Name='SubOneYear'
+                    Content='Subtract 1 Year'
+                    Click='SubOneYear_Click' />
+          </StackPanel>
           <StackPanel DockPanel.Dock='Left'>
             <Button x:Name='AddSixSeconds'
                     Content='Add 6 Seconds'
@@ -125,6 +139,26 @@
             <Button x:Name='AddEightHours'
                     Content='Add 8 Hours'
                     Click='AddEightHours_Click' />
+          </StackPanel>
+          <StackPanel DockPanel.Dock='Left'>
+            <Button x:Name='SubSixSeconds'
+                    Content='Subtract 6 Seconds'
+                    Click='SubSixSeconds_Click' />
+            <Button x:Name='SubOneMinute'
+                    Content='Subtract 1 Minute'
+                    Click='SubOneMinute_Click' />
+            <Button x:Name='SubTenMinute'
+                    Content='Subtract 10 Minutes'
+                    Click='SubTenMinute_Click' />
+            <Button x:Name='SubThirtyMinutes'
+                    Content='Subtract 30 Minutes'
+                    Click='SubThirtyMinutes_Click' />
+            <Button x:Name='SubOneHour'
+                    Content='Subtract 1 Hour'
+                    Click='SubOneHour_Click' />
+            <Button x:Name='SubEightHours'
+                    Content='Subtract 8 Hours'
+                    Click='SubEightHours_Click' />
           </StackPanel>
           <StackPanel>
             <TextBlock x:Name='CurrentDTText' />

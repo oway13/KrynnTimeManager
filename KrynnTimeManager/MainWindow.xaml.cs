@@ -187,6 +187,66 @@ namespace KrynnTimeManager
       currentDateTime.Text = currentDate.ToString();
       CurrentDTText.Text = currentDate.ToString();
     }
+    private void SubEightHours_Click(object sender, RoutedEventArgs e)
+    {
+      currentDate = currentDate.SubtractHours(8);
+      currentDateTime.Text = currentDate.ToString();
+      CurrentDTText.Text = currentDate.ToString();
+    }
+    private void SubOneHour_Click(object sender, RoutedEventArgs e)
+    {
+      currentDate = currentDate.SubtractHours(1);
+      currentDateTime.Text = currentDate.ToString();
+      CurrentDTText.Text = currentDate.ToString();
+    }
+    private void SubThirtyMinutes_Click(object sender, RoutedEventArgs e)
+    {
+      currentDate = currentDate.SubtractMinutes(30);
+      currentDateTime.Text = currentDate.ToString();
+      CurrentDTText.Text = currentDate.ToString();
+    }
+    private void SubTenMinute_Click(object sender, RoutedEventArgs e)
+    {
+      currentDate = currentDate.SubtractMinutes(10);
+      currentDateTime.Text = currentDate.ToString();
+      CurrentDTText.Text = currentDate.ToString();
+    }
+    private void SubOneMinute_Click(object sender, RoutedEventArgs e)
+    {
+      currentDate = currentDate.SubtractMinutes(1);
+      currentDateTime.Text = currentDate.ToString();
+      CurrentDTText.Text = currentDate.ToString();
+    }
+    private void SubSixSeconds_Click(object sender, RoutedEventArgs e)
+    {
+      currentDate = currentDate.SubtractSeconds(6);
+      currentDateTime.Text = currentDate.ToString();
+      CurrentDTText.Text = currentDate.ToString();
+    }
+    private void SubOneYear_Click(object sender, RoutedEventArgs e)
+    {
+      currentDate = currentDate.SubtractYears(1);
+      currentDateTime.Text = currentDate.ToString();
+      CurrentDTText.Text = currentDate.ToString();
+    }
+    private void SubOneMonth_Click(object sender, RoutedEventArgs e)
+    {
+      currentDate = currentDate.SubtractMonths(1);
+      currentDateTime.Text = currentDate.ToString();
+      CurrentDTText.Text = currentDate.ToString();
+    }
+    private void SubOneWeek_Click(object sender, RoutedEventArgs e)
+    {
+      currentDate = currentDate.SubtractDays(7);
+      currentDateTime.Text = currentDate.ToString();
+      CurrentDTText.Text = currentDate.ToString();
+    }
+    private void SubOneDay_Click(object sender, RoutedEventArgs e)
+    {
+      currentDate = currentDate.SubtractDays(1);
+      currentDateTime.Text = currentDate.ToString();
+      CurrentDTText.Text = currentDate.ToString();
+    }
     private void AddUpToOneDay(int seconds)
     {
       currentDate = currentDate.AddSeconds(seconds);
@@ -202,6 +262,7 @@ namespace KrynnTimeManager
       }
     }
 
+    //File Buttons
     private void OpenFile_Click(object sender, RoutedEventArgs e)
     {
       OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -255,5 +316,7 @@ namespace KrynnTimeManager
       //TODO: Clear Events
       UpdateCalendar();
     }
+
+    
   }
 }
