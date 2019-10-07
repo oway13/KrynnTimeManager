@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using KrynnTimeManager.lib;
 using KrynnTimeManager.UserControls;
+using Microsoft.Win32;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace KrynnTimeManager
 {
@@ -22,7 +25,7 @@ namespace KrynnTimeManager
   /// </summary>
   public partial class MainWindow : Window
   {
-    private KrynnDateTime currentDate = new KrynnDateTime(423, 1, 12);
+    private KrynnDateTime currentDate = new KrynnDateTime(421, 10, 15);
     private KrynnDateTime calendarDate;
 
     TextBlock firstDay = new TextBlock() { Text = "Giledai" };
@@ -199,6 +202,58 @@ namespace KrynnTimeManager
       }
     }
 
-    
+    private void OpenFile_Click(object sender, RoutedEventArgs e)
+    {
+      OpenFileDialog openFileDialog = new OpenFileDialog();
+      openFileDialog.Filter = "Campaign File (*.campaign)|*.campaign";
+      if (openFileDialog.ShowDialog() == true)
+      {
+        try
+        {
+          using (Stream input = File.OpenRead(openFileDialog.FileName))
+          {
+            BinaryFormatter bf = new BinaryFormatter();
+            currentDate = (KrynnDateTime)bf.Deserialize(input);
+            calendarDate = currentDate;
+            //TODO: open events
+          }
+        }
+        catch (Exception ex)
+        {
+          MessageBox.Show("Unable to open the campaign file\r\n" + ex.Message);
+        }
+      }
+      UpdateCalendar();
+    }
+
+    private void SaveFile_Click(object sender, RoutedEventArgs e)
+    {
+      SaveFileDialog saveFileDialog = new SaveFileDialog();
+      saveFileDialog.Filter = "Campaign File (*.campaign)|*.campaign";
+      if (saveFileDialog.ShowDialog() == true)
+      {
+        try
+        {
+          using (Stream output = File.Create(saveFileDialog.FileName))
+          {
+            BinaryFormatter bf = new BinaryFormatter();
+            bf.Serialize(output, currentDate);
+            //TODO: save events
+          }
+        } catch (Exception ex)
+        {
+          MessageBox.Show("Unable to save the campaign file\r\n" + ex.Message);
+        }
+      }
+    }
+
+    private void NewFile_Click(object sender, RoutedEventArgs e)
+    {
+      //TODO: New file dialog to set start date and maybe a campaign name?
+      currentDate = new KrynnDateTime(421, 10, 15);
+      calendarDate = currentDate;
+      //TODO: Clear Events
+      UpdateCalendar();
+    }
   }
 }

@@ -4,22 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace KrynnTimeManager.lib
 {
-    public class KrynnDateTimeNames
+  [Serializable]
+  public class KrynnDateTimeNames
+  {
+    public static string getMonth(int month)
     {
-        public static string getMonth(int month)
-        {
-            return ErgothianMonthsOfYear[month-1];
-        }
+      return ErgothianMonthsOfYear[month - 1];
+    }
 
-        public static string getDayOfWeek(int dayOfWeek)
-        {
-            return ErgothianDaysOfWeek[dayOfWeek];
-        }
+    public static string getDayOfWeek(int dayOfWeek)
+    {
+      return ErgothianDaysOfWeek[dayOfWeek];
+    }
 
-        private static readonly String[] ErgothianMonthsOfYear = new string[]
-        {
+    private static readonly String[] ErgothianMonthsOfYear = new string[]
+    {
             "Aelmont",
             "Rannmont",
             "Mishamont",
@@ -32,10 +34,10 @@ namespace KrynnTimeManager.lib
             "Hiddumont",
             "H'rarmont",
             "Phoenix"
-        };
+    };
 
-        private static readonly String[] ErgothianDaysOfWeek = new string[] 
-        {
+    private static readonly String[] ErgothianDaysOfWeek = new string[]
+    {
             "Boreadai",
             "Gileadai",
             "Luindai",
@@ -43,8 +45,8 @@ namespace KrynnTimeManager.lib
             "Soldai",
             "Manthus",
             "Shinarai"
-            
 
-        };
-    }
+
+    };
+  }
 }
