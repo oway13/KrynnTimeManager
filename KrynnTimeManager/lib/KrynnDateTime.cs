@@ -26,7 +26,7 @@ namespace KrynnTimeManager.lib
     {
       if (year < 421)
       {
-        throw new ArgumentOutOfRangeException("year", "Year cannot be before 421 AC");
+        year = 421;
       }
       this.Year = year;
       this.Month = month;
