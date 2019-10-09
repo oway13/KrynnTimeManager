@@ -232,7 +232,7 @@ namespace KrynnTimeManager
     private void UpdateEvents()
     {
       List<KrynnEvent> NewEventList = new List<KrynnEvent>();
-      foreach(KrynnEvent Event in Events)
+      foreach (KrynnEvent Event in Events)
       {
         if (Event.UpdateTime(currentDate))
           MessageBox.Show(Event.DateTime.ToString() + "\r\n\r\n" + Event.Description, Event.Name);
@@ -249,7 +249,7 @@ namespace KrynnTimeManager
       List<EventsListItem> items = new List<EventsListItem>();
       foreach (KrynnEvent Event in Events)
       {
-        items.Add(new EventsListItem() { EventDT = Event.DateTime.ToString()+" ", Description = Event.Description + " ", Name = Event.Name });
+        items.Add(new EventsListItem() { EventDT = Event.DateTime.ToString() + " ", Description = Event.Description + " ", Name = Event.Name });
       }
       EventsList.ItemsSource = items;
     }
@@ -312,11 +312,11 @@ namespace KrynnTimeManager
     }
     private void AddEightHours_Click(object sender, RoutedEventArgs e)
     {
-      AddUpToOneDay(8*3600);
+      AddUpToOneDay(8 * 3600);
     }
     private void AddOneDay_Click(object sender, RoutedEventArgs e)
     {
-      AddUpToOneDay(24*3600);
+      AddUpToOneDay(24 * 3600);
     }
     private void AddOneWeek_Click(object sender, RoutedEventArgs e)
     {
@@ -464,7 +464,8 @@ namespace KrynnTimeManager
             bf.Serialize(output, currentDate);
             //TODO: save events
           }
-        } catch (Exception ex)
+        }
+        catch (Exception ex)
         {
           MessageBox.Show("Unable to save the campaign file\r\n" + ex.Message);
         }
@@ -480,6 +481,31 @@ namespace KrynnTimeManager
       UpdateCalendar();
     }
 
-    
+    private void CreateNewEventButton_Click(object sender, RoutedEventArgs e)
+    {
+      if (String.IsNullOrEmpty(NewEventName.Text))
+      {
+        MessageBox.Show("Event Name cannot be empty", "Error Creating New Event");
+        return;
+      }
+      KrynnDateTime NewEventDT = new KrynnDateTime((int)NewEventYear.Value, (int)NewEventMonth.Value, (int)NewEventDay.Value,
+        (int)NewEventHour.Value, (int)NewEventMinute.Value, (int)NewEventSecond.Value);
+      if(currentDate.SecondsUntil(NewEventDT) <= 0)
+      {
+        MessageBox.Show("Event must occur in the future", "Error Creating New Event");
+        return;
+      }
+      Events.Add(new KrynnEvent(NewEventDT, currentDate, NewEventName.Text, NewEventDescription.Text));
+      MessageBox.Show("Event Successfully Created");
+      UpdateEvents();
+      NewEventName.Text = "";
+      NewEventDescription.Text = "";
+      NewEventYear.Value = NewEventYear.Minimum;
+      NewEventMonth.Value = NewEventMonth.Minimum;
+      NewEventDay.Value = NewEventDay.Minimum;
+      NewEventHour.Value = NewEventHour.Minimum;
+      NewEventMinute.Value = NewEventMinute.Minimum;
+      NewEventSecond.Value = NewEventSecond.Minimum;
+    }
   }
 }

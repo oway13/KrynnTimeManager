@@ -164,6 +164,7 @@
                 <RowDefinition Height='3*' />
                 <RowDefinition Height='1*' />
                 <RowDefinition Height='1*' />
+                <RowDefinition Height='1*' />
               </Grid.RowDefinitions>
               <Grid.ColumnDefinitions>
                 <ColumnDefinition Width='5*'
@@ -181,17 +182,20 @@
               </Grid.ColumnDefinitions>
               <TextBlock Text='Event Name'
                          Grid.Column='0'
-                         Grid.Row='0' />
+                         Grid.Row='0'
+                         Margin='5,10' />
               <TextBox x:Name='NewEventName'
                        Grid.Column='1'
                        Grid.Row='0'
                        Grid.ColumnSpan='5'
                        TextWrapping='NoWrap'
                        MaxLines='1'
-                       MaxLength='30'/>
+                       MaxLength='30'
+                       Margin='5,10' />
               <TextBlock Text='Event Description'
                          Grid.Column='0'
-                         Grid.Row='1' />
+                         Grid.Row='1'
+                         Margin='5,0' />
               <TextBox x:Name='NewEventDescription'
                        Grid.Column='1'
                        Grid.Row='1'
@@ -201,7 +205,8 @@
                        HorizontalScrollBarVisibility='Disabled'
                        VerticalScrollBarVisibility='Auto'
                        Width='250'
-                       Height='100'></TextBox>
+                       Height='100'
+                       Margin='5,0'></TextBox>
               <TextBlock Grid.Column='0'
                          Grid.Row='2'
                          Text='Year' />
@@ -261,6 +266,13 @@
                                   Maximum='59'
                                   DefaultValue='0'
                                   DisplayDefaultValueOnEmptyText='True' />
+              <Button x:Name='CreateNewEventButton'
+                      Grid.Column='0'
+                      Grid.Row='6'
+                      Content='Create New Event'
+                      Margin='5,10'
+                      Grid.ColumnSpan='6'
+                      Click='CreateNewEventButton_Click' />
             </Grid>
           </StackPanel>
           <DockPanel>
