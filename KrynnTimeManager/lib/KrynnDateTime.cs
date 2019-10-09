@@ -177,6 +177,28 @@ namespace KrynnTimeManager.lib
       return dateTwoCount - dateOneCount;
     }
 
+    public int SecondsUntil (KrynnDateTime untilDate)
+    {
+      int dateOneCount = 0;
+      dateOneCount += untilDate.Second;
+      dateOneCount += untilDate.Minute * 60;
+      dateOneCount += untilDate.Hour * 60 * 60;
+      dateOneCount += untilDate.Day * 60 * 60 * 24;
+      dateOneCount += untilDate.Month * 60 * 60 * 24 * 28;
+      dateOneCount += untilDate.Year * 60 * 60 * 24 * 28 * 12;
+      
+
+      int dateTwoCount = 0;
+      dateTwoCount += this.Second;
+      dateTwoCount += this.Minute * 60;
+      dateTwoCount += this.Hour * 60 * 60;
+      dateTwoCount += this.Day * 60 * 60 * 24;
+      dateTwoCount += this.Month * 60 * 60 * 24 * 28;
+      dateTwoCount += this.Year * 60 * 60 * 24 * 28 * 12;
+
+      return dateOneCount-dateTwoCount;
+    }
+
     public int DaysSinceStart()
     {
       return DaysSince(new KrynnDateTime(421, 10, 15));
