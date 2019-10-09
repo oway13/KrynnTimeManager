@@ -44,6 +44,7 @@ namespace KrynnTimeManager
       calendarDate = new KrynnDateTime(currentDate.Year, currentDate.Month, 1);
       HolidayYear = currentDate.Year;
       Events = new List<KrynnEvent>();
+      AddCurrentYearsHolidays();
       UpdateCalendar();
     }
 
@@ -224,27 +225,33 @@ namespace KrynnTimeManager
 
       foreach (KrynnEvent holiday in Holidays)
       {
-        if (holiday.UpdateTime(currentDate))
-          Holidays.Remove(holiday);
+        if (!holiday.UpdateTime(currentDate))
+          Events.Add(holiday);
       }
-      foreach (KrynnEvent holiday in Holidays)
-        Events.Add(holiday);
     }
     private void UpdateEvents()
     {
+      List<KrynnEvent> NewEventList = new List<KrynnEvent>();
       foreach(KrynnEvent Event in Events)
       {
         if (Event.UpdateTime(currentDate))
-        {
-          MessageBox.Show(Event.DateTime.ToString()+"\r\n"+Event.Description, Event.Name);
-          Events.Remove(Event);
-        }
+          MessageBox.Show(Event.DateTime.ToString() + "\r\n\r\n" + Event.Description, Event.Name);
+        else
+          NewEventList.Add(Event);
       }
+      Events = NewEventList;
       if (currentDate.Year != HolidayYear)
       {
         AddCurrentYearsHolidays();
         HolidayYear = currentDate.Year;
       }
+
+      List<EventsListItem> items = new List<EventsListItem>();
+      foreach (KrynnEvent Event in Events)
+      {
+        items.Add(new EventsListItem() { EventDT = Event.DateTime.ToString()+" ", Description = Event.Description + " ", Name = Event.Name });
+      }
+      EventsList.ItemsSource = items;
     }
     private void UpdateCalendar()
     {
@@ -316,84 +323,98 @@ namespace KrynnTimeManager
       currentDate = currentDate.AddDays(7);
       currentDateTime.Text = currentDate.ToString();
       CurrentDTText.Text = currentDate.ToString();
+      UpdateEvents();
     }
     private void AddOneMonth_Click(object sender, RoutedEventArgs e)
     {
       currentDate = currentDate.AddMonths(1);
       currentDateTime.Text = currentDate.ToString();
       CurrentDTText.Text = currentDate.ToString();
+      UpdateEvents();
     }
     private void AddOneYear_Click(object sender, RoutedEventArgs e)
     {
       currentDate = currentDate.AddYears(1);
       currentDateTime.Text = currentDate.ToString();
       CurrentDTText.Text = currentDate.ToString();
+      UpdateEvents();
     }
     private void SubEightHours_Click(object sender, RoutedEventArgs e)
     {
       currentDate = currentDate.SubtractHours(8);
       currentDateTime.Text = currentDate.ToString();
       CurrentDTText.Text = currentDate.ToString();
+      UpdateEvents();
     }
     private void SubOneHour_Click(object sender, RoutedEventArgs e)
     {
       currentDate = currentDate.SubtractHours(1);
       currentDateTime.Text = currentDate.ToString();
       CurrentDTText.Text = currentDate.ToString();
+      UpdateEvents();
     }
     private void SubThirtyMinutes_Click(object sender, RoutedEventArgs e)
     {
       currentDate = currentDate.SubtractMinutes(30);
       currentDateTime.Text = currentDate.ToString();
       CurrentDTText.Text = currentDate.ToString();
+      UpdateEvents();
     }
     private void SubTenMinute_Click(object sender, RoutedEventArgs e)
     {
       currentDate = currentDate.SubtractMinutes(10);
       currentDateTime.Text = currentDate.ToString();
       CurrentDTText.Text = currentDate.ToString();
+      UpdateEvents();
     }
     private void SubOneMinute_Click(object sender, RoutedEventArgs e)
     {
       currentDate = currentDate.SubtractMinutes(1);
       currentDateTime.Text = currentDate.ToString();
       CurrentDTText.Text = currentDate.ToString();
+      UpdateEvents();
     }
     private void SubSixSeconds_Click(object sender, RoutedEventArgs e)
     {
       currentDate = currentDate.SubtractSeconds(6);
       currentDateTime.Text = currentDate.ToString();
       CurrentDTText.Text = currentDate.ToString();
+      UpdateEvents();
     }
     private void SubOneYear_Click(object sender, RoutedEventArgs e)
     {
       currentDate = currentDate.SubtractYears(1);
       currentDateTime.Text = currentDate.ToString();
       CurrentDTText.Text = currentDate.ToString();
+      UpdateEvents();
     }
     private void SubOneMonth_Click(object sender, RoutedEventArgs e)
     {
       currentDate = currentDate.SubtractMonths(1);
       currentDateTime.Text = currentDate.ToString();
       CurrentDTText.Text = currentDate.ToString();
+      UpdateEvents();
     }
     private void SubOneWeek_Click(object sender, RoutedEventArgs e)
     {
       currentDate = currentDate.SubtractDays(7);
       currentDateTime.Text = currentDate.ToString();
       CurrentDTText.Text = currentDate.ToString();
+      UpdateEvents();
     }
     private void SubOneDay_Click(object sender, RoutedEventArgs e)
     {
       currentDate = currentDate.SubtractDays(1);
       currentDateTime.Text = currentDate.ToString();
       CurrentDTText.Text = currentDate.ToString();
+      UpdateEvents();
     }
     private void AddUpToOneDay(int seconds)
     {
       currentDate = currentDate.AddSeconds(seconds);
       currentDateTime.Text = currentDate.ToString();
       CurrentDTText.Text = currentDate.ToString();
+      UpdateEvents();
     }
 
     private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
