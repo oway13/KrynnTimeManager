@@ -240,7 +240,7 @@ namespace KrynnTimeManager
           NewEventList.Add(Event);
       }
       Events = NewEventList;
-      if (currentDate.Year != HolidayYear)
+      if (currentDate.Year != HolidayYear || Events.Count == 0)
       {
         AddCurrentYearsHolidays();
         HolidayYear = currentDate.Year;
@@ -258,7 +258,7 @@ namespace KrynnTimeManager
       CalendarDays.Children.Clear();
       calendarMonthYear.Text = calendarDate.ToMonthYearString();
       currentDateTime.Text = currentDate.ToString();
-      CurrentDTText.Text = currentDate.ToString();
+      CurrentDTText.Text = "Current Date: "+currentDate.ToString();
       if (calendarDate.Year == 421 && calendarDate.Month == 10)
       {
         backOneMonth.IsEnabled = false;
@@ -439,7 +439,12 @@ namespace KrynnTimeManager
             BinaryFormatter bf = new BinaryFormatter();
             currentDate = (KrynnDateTime)bf.Deserialize(input);
             calendarDate = currentDate;
-            //TODO: open events
+            Events.Clear();
+            while(input.Position < input.Length)
+            {
+              KrynnEvent newEvent = (KrynnEvent)bf.Deserialize(input);
+              Events.Add(newEvent);
+            }
           }
         }
         catch (Exception ex)
@@ -462,7 +467,10 @@ namespace KrynnTimeManager
           {
             BinaryFormatter bf = new BinaryFormatter();
             bf.Serialize(output, currentDate);
-            //TODO: save events
+            foreach(KrynnEvent Event in Events)
+            {
+              bf.Serialize(output, Event);
+            }
           }
         }
         catch (Exception ex)
@@ -477,7 +485,7 @@ namespace KrynnTimeManager
       //TODO: New file dialog to set start date and maybe a campaign name?
       currentDate = new KrynnDateTime(421, 10, 15);
       calendarDate = currentDate;
-      //TODO: Clear Events
+      Events.Clear();
       UpdateCalendar();
     }
 

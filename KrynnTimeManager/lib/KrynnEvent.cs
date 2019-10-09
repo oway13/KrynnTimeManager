@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace KrynnTimeManager.lib
 {
+  [Serializable]
   class KrynnEvent
   {
     public KrynnEvent(KrynnDateTime eventDT, KrynnDateTime currentDT, string name, string description)
