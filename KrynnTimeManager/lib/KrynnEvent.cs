@@ -11,8 +11,7 @@ namespace KrynnTimeManager.lib
     public KrynnEvent(KrynnDateTime eventDT, KrynnDateTime currentDT, string name, string description)
     {
       this.DateTime = eventDT;
-      if ((this.SecondsLeft = currentDT.SecondsUntil(this.DateTime)) <= 0)
-        throw new ArgumentException("Event DateTime must be later than Current DateTime");
+      this.SecondsLeft = currentDT.SecondsUntil(this.DateTime);
       this.Name = name;
       this.Description = description;
     }

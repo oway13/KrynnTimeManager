@@ -27,6 +27,8 @@ namespace KrynnTimeManager
   {
     private KrynnDateTime currentDate = new KrynnDateTime(421, 10, 15);
     private KrynnDateTime calendarDate;
+    private List<KrynnEvent> Events;
+    private int HolidayYear;
 
     TextBlock firstDay = new TextBlock() { Text = "Giledai" };
     TextBlock secondDay = new TextBlock() { Text = "Luindai" };
@@ -40,6 +42,8 @@ namespace KrynnTimeManager
     {
       InitializeComponent();
       calendarDate = new KrynnDateTime(currentDate.Year, currentDate.Month, 1);
+      HolidayYear = currentDate.Year;
+      Events = new List<KrynnEvent>();
       UpdateCalendar();
     }
 
@@ -104,6 +108,144 @@ namespace KrynnTimeManager
         }
       }
     }
+    private void AddCurrentYearsHolidays()
+    {
+      List<KrynnEvent> Holidays = new List<KrynnEvent>();
+
+      KrynnDateTime DarkDayDT = new KrynnDateTime(currentDate.Year, 1, 3);
+      Holidays.Add(new KrynnEvent(DarkDayDT, currentDate, "Dark Day", "Anniversary of the First Cataclysm, the 13th day of the Yuletide celebration which begins on the 19th of Twelfthmonth.  It is also considered holy to the followers of Takhisis as a celebration of her return from the exile imposed upon her by Huma Dragonbane."));
+      KrynnDateTime NightOfTheMantisDT = new KrynnDateTime(currentDate.Year, 1, 18);
+      Holidays.Add(new KrynnEvent(NightOfTheMantisDT, currentDate, "Night of the Mantis", "This holy day for followers of Majere is used to renew their focus and for initiations. They will spend the day fasting, chanting, and meditating."));
+
+      KrynnDateTime SnowDayDT = new KrynnDateTime(currentDate.Year, 2, 8);
+      Holidays.Add(new KrynnEvent(SnowDayDT, currentDate, "Snow Day", "Exactly five weeks into the year, it is a celebration of the nearing end of winter.  The children typically spend the day playing in the snow."));
+      KrynnDateTime HarnkeggerfestStartDT = new KrynnDateTime(currentDate.Year, 2, 9);
+      Holidays.Add(new KrynnEvent(HarnkeggerfestStartDT, currentDate, "Start of Harnkeggerfest", "Originally a dwarven celebration, it is now almost universally observed by all taverns and drinkers.  It is a time of testing the first barrel of dwarf spirits and of drinking.  Some see it as a holy celebration for Reorx as well."));
+      KrynnDateTime HarnkeggerfestEndDT = new KrynnDateTime(currentDate.Year, 2, 13);
+      Holidays.Add(new KrynnEvent(HarnkeggerfestEndDT, currentDate, "End of Harnkeggerfest", "Originally a dwarven celebration, it is now almost universally observed by all taverns and drinkers.  It is a time of testing the first barrel of dwarf spirits and of drinking.  Some see it as a holy celebration for Reorx as well."));
+      KrynnDateTime TheOathbreakingDT = new KrynnDateTime(currentDate.Year, 2, 22);
+      Holidays.Add(new KrynnEvent(TheOathbreakingDT, currentDate, "The Oathbreaking", "Anniversary of the discovery of the origin of the draconians.  Metallic dragons spend the day mourning for their lost children and viciously hunting down draconians. "));
+      KrynnDateTime HonorsDawnDT = new KrynnDateTime(currentDate.Year, 2, 23);
+      Holidays.Add(new KrynnEvent(HonorsDawnDT, currentDate, "Honor's Dawn", "Celebrated in Solamnia, this day honors the life of Knight of the Crown Sturm Brightblade by recognizing the day of his death and sacrifice.  In the years following the War of the Lance, Solamnics began to make pilgrimages to Sturm’s tomb in the High Clerist Tower."));
+
+      KrynnDateTime SiegedayDT = new KrynnDateTime(currentDate.Year, 3, 3);
+      Holidays.Add(new KrynnEvent(SiegedayDT, currentDate, "Siegeday", "Celebrated in Solamnia (and by most wizards), this day is the anniversary of the Blue Lady Kitiara’s siege of Palanthas and the sacrifice of Archmage Raistlin Majere."));
+      KrynnDateTime KiteDayDT = new KrynnDateTime(currentDate.Year, 3, 7);
+      Holidays.Add(new KrynnEvent(KiteDayDT, currentDate, "Kite Day", "Last day of relaxation and fun before the real work begins for farming communities. "));
+      KrynnDateTime KithKanandrasDT = new KrynnDateTime(currentDate.Year, 3, 14);
+      Holidays.Add(new KrynnEvent(KithKanandrasDT, currentDate, "Kith-Kanandras", "Qualinesti elves use this day to honor the life of their founding father, Kith-Kanan; it is the anniversary of Kith-Kanan’s death.  The Qualinesti are different in that they celebrate the life of their founding father on both his day of Life-Gift and on the day of his death. "));
+      KrynnDateTime SilvanosdrasDT = new KrynnDateTime(currentDate.Year, 3, 15);
+      Holidays.Add(new KrynnEvent(SilvanosdrasDT, currentDate, "Silvanosdras", "Silvanesti elves use this day to honor the life of their founding father, Silvanos."));
+      KrynnDateTime SpringDawningDT = new KrynnDateTime(currentDate.Year, 3, 21);
+      Holidays.Add(new KrynnEvent(SpringDawningDT, currentDate, "Spring Dawning", " First day of spring and the day of the Vernal Equinox.  Celebrated by all of Ansalon, celebrations usually include some form of festival or feast.  All turnings of the season are seen as holy times for the clerics and druids of Chislev. "));
+      KrynnDateTime DayOfTheHuntSpringDT = new KrynnDateTime(currentDate.Year, 3, 22);
+      Holidays.Add(new KrynnEvent(DayOfTheHuntSpringDT, currentDate, "Day of the Hunt", "A holy day, on the first day of every new season, the followers of Kiri-Jolith spend the day seeking wrongs to right and helping people in need."));
+      KrynnDateTime DayOfReflectionDT = new KrynnDateTime(currentDate.Year, 3, 25);
+      Holidays.Add(new KrynnEvent(DayOfReflectionDT, currentDate, "Day of Reflection", "The followers of Zivilyn spend this holy day in meditation.  It usually begins with fasting and a fervent hymn."));
+
+      KrynnDateTime ChildrensDayDT = new KrynnDateTime(currentDate.Year, 4, 1);
+      Holidays.Add(new KrynnEvent(ChildrensDayDT, currentDate, "Chilren's Day", "It is a celebration of life, birth, and reproduction.  It is a day of wild abandon and reckless joy.  Any livestock born on this day are considered an omen of good luck. "));
+      KrynnDateTime HarrowingDT = new KrynnDateTime(currentDate.Year, 4, 4);
+      Holidays.Add(new KrynnEvent(HarrowingDT, currentDate, "Harrowing", "Planting season starts this day.  It is also seen as a holy day to the followers of Chislev.  Her clerics and druids will wander into communities blessing the crops for a good season."));
+      KrynnDateTime ForgedayDT = new KrynnDateTime(currentDate.Year, 4, 19);
+      Holidays.Add(new KrynnEvent(ForgedayDT, currentDate, "Forgeday", "This holy day of Reorx is celebrated mostly by dwarves and clerics of Reorx.  Blacksmiths forge particularly exquisite items and present them at a community feast."));
+
+      KrynnDateTime BookClosingDT = new KrynnDateTime(currentDate.Year, 5, 4);
+      Holidays.Add(new KrynnEvent(BookClosingDT, currentDate, "Book Closing", "Starting after the Blue Lady’s War, this was the only time Astinus would set aside his pen for a whole day.  Oddly nothing of historical significance ever seems to happen on this day.  The day is spent in remembrance of Astinus and reading one’s favorite book."));
+      KrynnDateTime VisitingDayDT = new KrynnDateTime(currentDate.Year, 5, 11);
+      Holidays.Add(new KrynnEvent(VisitingDayDT, currentDate, "Visiting Day", "This is a day of spring cleaning.  Most communities will clean in the morning, and then visit others’ houses in the afternoon.  The kender have their own version called “Hi, how are you?”  Many people see it as a localized version of wanderlust. "));
+      KrynnDateTime FeastOfTheSeaDT = new KrynnDateTime(currentDate.Year, 5, 13);
+      Holidays.Add(new KrynnEvent(FeastOfTheSeaDT, currentDate, "Feast of the Sea", "This day is considered holy to followers of Habbakuk and is also celebrated by seamen.  It is an auspicious day to launch, begin building, or christen a new sea vessel.  Most sailors toss small sacrifices to the waves for good luck."));
+      KrynnDateTime VinasfestDT = new KrynnDateTime(currentDate.Year, 5, 25);
+      Holidays.Add(new KrynnEvent(VinasfestDT, currentDate, "Vinasfest", "It is widely accepted in Solamnia that this is the day of Life-Gift for Vinas Solamnus and is used to honor the founding father of both Solamnia and her honorable protectors, the Knights of Solamnia. "));
+
+      KrynnDateTime KithKananaithDT = new KrynnDateTime(currentDate.Year, 6, 1);
+      Holidays.Add(new KrynnEvent(KithKananaithDT, currentDate, "Kith-Kananaith", "Qualinesti elves use this day to honor the life of their founding father, Kith-Kanan; it is the anniversary of Kith-Kanan’s Life-Gift.  The Qualinesti are different in that they celebrate the life of their founding father on both his day of Life-Gift and the day of his death."));
+      KrynnDateTime DayOfStormsDT = new KrynnDateTime(currentDate.Year, 6, 3);
+      Holidays.Add(new KrynnEvent(DayOfStormsDT, currentDate, "Day of Storms", "A holy day to the followers of Zeboim, it is also a day recognized by the northern sailors as the day that marks the middle of the storm season.  The day is always marked by violent thunderstorms and cyclones.  Sailors will pour red wine into the sea as a placating gift to the easily angered sea goddess."));
+      KrynnDateTime MidYearDayDT = new KrynnDateTime(currentDate.Year, 6, 21);
+      Holidays.Add(new KrynnEvent(MidYearDayDT, currentDate, "Mid-year Day", "This is the first day of summer and also the Summer Solstice.  All turnings of the season are seen as holy times for the clerics and druids of Chislev. "));
+      KrynnDateTime DayOfTheHuntSummerDT = new KrynnDateTime(currentDate.Year, 6, 22);
+      Holidays.Add(new KrynnEvent(DayOfTheHuntSummerDT, currentDate, "Day of the Hunt", "A holy day, on the first day of every new season, the followers of Kiri-Jolith spend the day seeking wrongs to right and helping people in need."));
+      KrynnDateTime DayOfFireDT = new KrynnDateTime(currentDate.Year, 6, 23);
+      Holidays.Add(new KrynnEvent(DayOfFireDT, currentDate, "Day of Fire", "Anniversary of the Second Cataclysm, the day Chaos was defeated."));
+
+      KrynnDateTime DayOfSargonnasDT = new KrynnDateTime(currentDate.Year, 7, 1);
+      Holidays.Add(new KrynnEvent(DayOfSargonnasDT, currentDate, "Day of Sargonnas", "This day is a day of celebration honoring the day the minotaurs revolted against the dwarves of Kal-Thax and the idea that “might makes right.”"));
+      KrynnDateTime GreystoneEveDT = new KrynnDateTime(currentDate.Year, 7, 8);
+      Holidays.Add(new KrynnEvent(GreystoneEveDT, currentDate, "Greystone Eve", "This day is recognized by dwarves and kender (and probably would be by gnomes as well, if they cared).  It is supposedly the day the Greystone of Gargath was released upon the world.  Dwarves view the day with superstition, while kender happily hold Stone hunts."));
+      KrynnDateTime FestivalOfCandlesDT = new KrynnDateTime(currentDate.Year, 7, 15);
+      Holidays.Add(new KrynnEvent(FestivalOfCandlesDT, currentDate, "Festival of Candles", "This day the dwarves of Thorbardin honor their dead, and it is known only to them. "));
+      KrynnDateTime DayOfDragonsDT = new KrynnDateTime(currentDate.Year, 7, 20);
+      Holidays.Add(new KrynnEvent(DayOfDragonsDT, currentDate, "Day of Dragons", "Recognized by evil chromatic dragons, it is the anniversary of their release from the Age of Exile.  They celebrate this day the best way they know how, by wanton destruction."));
+      KrynnDateTime FamilyFeastDT = new KrynnDateTime(currentDate.Year, 7, 23);
+      Holidays.Add(new KrynnEvent(FamilyFeastDT, currentDate, "Family Feast", "One month after the Day of Fire, it is a day of thanks and hope for the future. "));
+
+      KrynnDateTime GoldenWeekStartDT = new KrynnDateTime(currentDate.Year, 8, 1);
+      Holidays.Add(new KrynnEvent(GoldenWeekStartDT, currentDate, "Start of Golden Week", "The priests of Shinare spend the first of these holy days fasting and taking inventory.  It is always followed by a large party on the fifth day of the celebration."));
+      KrynnDateTime GoldenWeekEndDT = new KrynnDateTime(currentDate.Year, 8, 5);
+      Holidays.Add(new KrynnEvent(GoldenWeekEndDT, currentDate, "End of Golden Week", "The priests of Shinare spend the first of these holy days fasting and taking inventory.  It is always followed by a large party on the fifth day of the celebration."));
+      KrynnDateTime FestivalOfBonesDT = new KrynnDateTime(currentDate.Year, 8, 28);
+      Holidays.Add(new KrynnEvent(FestivalOfBonesDT, currentDate, "Festival of Bones", "Most people of Ansalon recognize this tradition of choosing one ancestor every year and honoring them on this day. "));
+
+      KrynnDateTime HeroesMeetDT = new KrynnDateTime(currentDate.Year, 9, 13);
+      Holidays.Add(new KrynnEvent(HeroesMeetDT, currentDate, "Heroes Meet", "Celebrated primarily in Abanasinia, this day is the anniversary of the day the Heroes of the Lance reunited before the war in Solace.  "));
+      KrynnDateTime HarvestComeDT = new KrynnDateTime(currentDate.Year, 9, 21);
+      Holidays.Add(new KrynnEvent(HarvestComeDT, currentDate, "Harvest Come", "Sometimes also referred to as “Summer’s End,” this holiday celebrates the last day of summer and occurs on the day of the Autumnal Equinox.  Most places celebrate this with a large local festival or feast.  All turnings of the season are seen as holy times for the clerics and druids of Chislev.  This day is also seen as holy to the followers of Chemosh symbolizing the decay of nature into autumn.  In the evening they consecrate new initiates. "));
+      KrynnDateTime DayOfTheHuntAutumnDT = new KrynnDateTime(currentDate.Year, 9, 22);
+      Holidays.Add(new KrynnEvent(DayOfTheHuntAutumnDT, currentDate, "Day of the Hunt", "A holy day, on the first day of every new season, the followers of Kiri-Jolith spend the day seeking wrongs to right and helping people in need. "));
+      KrynnDateTime QualintsalarothDT = new KrynnDateTime(currentDate.Year, 9, 25);
+      Holidays.Add(new KrynnEvent(QualintsalarothDT, currentDate, "Qualintsalaroth", "Meaning “Death of Qualinesti”, it marks the anniversary of the day the Qualinesti elves abandoned their forest to the encroaching Dragonarmies during the War of the Lance.  The Qualinesti elves use this day to honor their dead."));
+
+      KrynnDateTime FestivalOfKnightsDT = new KrynnDateTime(currentDate.Year, 10, 12);
+      Holidays.Add(new KrynnEvent(FestivalOfKnightsDT, currentDate, "Festival of Knights", "This was a day celebrated in Palanthas following the War of the Lance honoring their saviors, the Knights of Solamnia."));
+      KrynnDateTime FestivalOfTheEyeDT = new KrynnDateTime(currentDate.Year, 10, 15);
+      Holidays.Add(new KrynnEvent(FestivalOfTheEyeDT, currentDate, "Festival of the Eye", "This is a day of great magical power for wizards.  Although it is celebrated every year, the true power comes on a Night of the Eye.  The conjunction of the three moons to form a large eye staring down on Krynn happens over Ansalon only once every three years, and this is the night it occurs."));
+
+      KrynnDateTime GenealogyDayDT = new KrynnDateTime(currentDate.Year, 11, 13);
+      Holidays.Add(new KrynnEvent(GenealogyDayDT, currentDate, "Genealogy Day", "This day of celebration for the gnomes is sometimes called “Updateandverifyyourname Day.”  They spend the day doing just that. "));
+      KrynnDateTime RifarsdagDT = new KrynnDateTime(currentDate.Year, 11, 16);
+      Holidays.Add(new KrynnEvent(RifarsdagDT, currentDate, "Rifarsdag", "This is a day of celebration in Icewall, also known as “Reaver’s Day,” it is the anniversary of the death of White Dragon Highlord Feal-thas."));
+      KrynnDateTime OldFolksDayDT = new KrynnDateTime(currentDate.Year, 11, 22);
+      Holidays.Add(new KrynnEvent(OldFolksDayDT, currentDate, "Old Folk's Day", "Most communities use this day to honor the elders in the family.  The younger family members spend the day doing special chores for their elders. "));
+
+      KrynnDateTime ThanksALotDayDT = new KrynnDateTime(currentDate.Year, 12, 6);
+      Holidays.Add(new KrynnEvent(ThanksALotDayDT, currentDate, "Thanks-a-lot Day", "The Kender of the world spend this day in awe and thanks of all the wonderful things they have acquired over the year. "));
+      KrynnDateTime KharasShameDT = new KrynnDateTime(currentDate.Year, 12, 10);
+      Holidays.Add(new KrynnEvent(KharasShameDT, currentDate, "Kharas' Shame", "The Dwarves celebrate the dwarven hero Kharas.  All dwarves will tuck their beards into their shirts and belts in silent honor of Kharas who shaved his own beard in shame of the Dwarfgate Wars."));
+      KrynnDateTime YuletideStartDT = new KrynnDateTime(currentDate.Year, 12, 19);
+      Holidays.Add(new KrynnEvent(YuletideStartDT, currentDate, "First Day of Yuletide", "This is the first official day of the two week long Yuletide Celebration."));
+      KrynnDateTime YuleDT = new KrynnDateTime(currentDate.Year, 12, 21);
+      Holidays.Add(new KrynnEvent(YuleDT, currentDate, "Yule", "Celebrated around the continent, Yule signifies the first day of winter (the Winter Solstice) and is a time of family togetherness and celebration.  All turnings of the season are seen as holy times for the clerics and druids of Chislev. "));
+      KrynnDateTime DayOfTheHuntWinterDT = new KrynnDateTime(currentDate.Year, 12, 22);
+      Holidays.Add(new KrynnEvent(DayOfTheHuntWinterDT, currentDate, "Day of the Hunt", "A holy day, on the first day of every new season, the followers of Kiri-Jolith spend the day seeking wrongs to right and helping people in need."));
+      KrynnDateTime BrothersbaneDT = new KrynnDateTime(currentDate.Year, 12, 25);
+      Holidays.Add(new KrynnEvent(BrothersbaneDT, currentDate, "Brothersbane", "This day marks the catastrophic end to the Dwarfgate Wars.  Dwarves spend this day in mourning.  In the years following the War of the Lance on the morning of Brothersbane, the king of Thorbardin will meet with the thane of the Neidar on the shattered Plains of Dergoth and invite the hill dwarves into Thorbardin.  Every year, the Neidar respectfully decline."));
+
+      foreach (KrynnEvent holiday in Holidays)
+      {
+        if (holiday.UpdateTime(currentDate))
+          Holidays.Remove(holiday);
+      }
+      foreach (KrynnEvent holiday in Holidays)
+        Events.Add(holiday);
+    }
+    private void UpdateEvents()
+    {
+      foreach(KrynnEvent Event in Events)
+      {
+        if (Event.UpdateTime(currentDate))
+        {
+          MessageBox.Show(Event.DateTime.ToString()+"\r\n"+Event.Description, Event.Name);
+          Events.Remove(Event);
+        }
+      }
+      if (currentDate.Year != HolidayYear)
+      {
+        AddCurrentYearsHolidays();
+        HolidayYear = currentDate.Year;
+      }
+    }
     private void UpdateCalendar()
     {
       CalendarDays.Children.Clear();
@@ -118,7 +260,7 @@ namespace KrynnTimeManager
       {
         backOneMonth.IsEnabled = true;
       }
-
+      UpdateEvents();
       AddDayNames();
       AddCalendarDays();
     }

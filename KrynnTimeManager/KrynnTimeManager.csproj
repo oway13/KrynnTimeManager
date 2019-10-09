@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="lib\KrynnEvent.cs" />
     <Compile Include="lib\MoonPhasesApexes.cs" />
     <Compile Include="lib\UIHelper.cs" />
     <Compile Include="UserControls\CalendarDay.xaml.cs">
