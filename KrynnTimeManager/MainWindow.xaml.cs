@@ -417,6 +417,7 @@ namespace KrynnTimeManager
       UpdateEvents();
     }
 
+    //Misc. WPF Events
     private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
       if (CalendarTab.IsSelected)
@@ -489,6 +490,8 @@ namespace KrynnTimeManager
       UpdateCalendar();
     }
 
+
+    //KrynnEvent Creation
     private void CreateNewEventButton_Click(object sender, RoutedEventArgs e)
     {
       if (String.IsNullOrEmpty(NewEventName.Text))
@@ -514,6 +517,58 @@ namespace KrynnTimeManager
       NewEventHour.Value = NewEventHour.Minimum;
       NewEventMinute.Value = NewEventMinute.Minimum;
       NewEventSecond.Value = NewEventSecond.Minimum;
+    }
+
+    private void EventToCurrentTime_Click(object sender, RoutedEventArgs e)
+    {
+      NewEventYear.Value = currentDate.Year;
+      NewEventMonth.Value = currentDate.Month;
+      NewEventDay.Value = currentDate.Day;
+      NewEventHour.Value = currentDate.Hour;
+      NewEventMinute.Value = currentDate.Minute;
+      NewEventSecond.Value = currentDate.Second;
+    }
+
+    private void CreateNewAlarmButton_Click(object sender, RoutedEventArgs e)
+    {
+      if (String.IsNullOrEmpty(NewAlarmName.Text))
+      {
+        MessageBox.Show("Alarm Name cannot be empty", "Error Creating New Alarm");
+        return;
+      }
+      KrynnDateTime NewAlarmDT = new KrynnDateTime(
+        currentDate.Year+(int)NewAlarmYear.Value,
+        currentDate.Month+(int)NewAlarmMonth.Value,
+        currentDate.Day+(int)NewAlarmDay.Value,
+        currentDate.Hour+(int)NewAlarmHour.Value,
+        currentDate.Minute+(int)NewAlarmMinute.Value,
+        currentDate.Second+(int)NewAlarmSecond.Value);
+      if (currentDate.SecondsUntil(NewAlarmDT) <= 0)
+      {
+        MessageBox.Show("Alarm must occur in the future", "Error Creating New Alarm");
+        return;
+      }
+      Events.Add(new KrynnEvent(NewAlarmDT, currentDate, NewAlarmName.Text, NewAlarmDescription.Text));
+      MessageBox.Show("Alarm Successfully Created");
+      UpdateEvents();
+      NewAlarmName.Text = "";
+      NewAlarmDescription.Text = "";
+      NewAlarmYear.Value = NewAlarmYear.Minimum;
+      NewAlarmMonth.Value = NewAlarmMonth.Minimum;
+      NewAlarmDay.Value = NewAlarmDay.Minimum;
+      NewAlarmHour.Value = NewAlarmHour.Minimum;
+      NewAlarmMinute.Value = NewAlarmMinute.Minimum;
+      NewAlarmSecond.Value = NewAlarmSecond.Minimum;
+    }
+
+    private void AlarmToZero_Click(object sender, RoutedEventArgs e)
+    {
+      NewAlarmYear.Value = 0;
+      NewAlarmMonth.Value = 0;
+      NewAlarmDay.Value = 0;
+      NewAlarmHour.Value = 0;
+      NewAlarmMinute.Value = 0;
+      NewAlarmSecond.Value = 0;
     }
   }
 }
