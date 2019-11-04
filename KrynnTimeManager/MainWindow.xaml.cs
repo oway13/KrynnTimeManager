@@ -87,6 +87,7 @@ namespace KrynnTimeManager
         for (int j = 0; j < 7; j++)
         {
           CalendarDay dayToAdd = new CalendarDay(new KrynnDateTime(calendarDate.Year, calendarDate.Month, count));
+          dayToAdd.MouseUp += CalendarDays_MouseUp;
           count++;
           CalendarDays.Children.Add(dayToAdd);
           Grid.SetRow(dayToAdd, i);
@@ -255,10 +256,22 @@ namespace KrynnTimeManager
     }
     private void UpdateCalendar()
     {
+      //int SelectedDayIndex = -1;
+      //for(int i = 0; i < CalendarDays.Children.Count; i++)
+      //{
+      //  if (CalendarDays.Children[i] is CalendarDay)
+      //  {
+      //    CalendarDay cDay = CalendarDays.Children[i] as CalendarDay;
+      //    if (cDay.Selected)
+      //      SelectedDayIndex = i;
+      //    break;
+      //  }
+      //}
       CalendarDays.Children.Clear();
       calendarMonthYear.Text = calendarDate.ToMonthYearString();
       currentDateTime.Text = currentDate.ToString();
       CurrentDTText.Text = "Current Date: "+currentDate.ToString();
+      DateInfoPanel.Visibility = Visibility.Collapsed;
       if (calendarDate.Year == 421 && calendarDate.Month == 10)
       {
         backOneMonth.IsEnabled = false;
@@ -270,6 +283,11 @@ namespace KrynnTimeManager
       UpdateEvents();
       AddDayNames();
       AddCalendarDays();
+      //if(SelectedDayIndex != -1)
+      //{
+      //  CalendarDay SelectedDay = CalendarDays.Children[SelectedDayIndex] as CalendarDay;
+      //  SelectDay(SelectedDay);
+      //}
     }
 
     //Calendar Changing Buttons
@@ -569,6 +587,36 @@ namespace KrynnTimeManager
       NewAlarmHour.Value = 0;
       NewAlarmMinute.Value = 0;
       NewAlarmSecond.Value = 0;
+    }
+
+
+    //Day Selection
+    private void CalendarDays_MouseUp(object sender, MouseButtonEventArgs e)
+    {
+      CalendarDay SelectedDay = sender as CalendarDay;
+      SelectDay(SelectedDay);
+    }
+
+    private void SelectDay(CalendarDay SelectedDay)
+    {
+      if (SelectedDay.Selected)
+      {
+        SelectedDay.OnDeselect();
+        DateInfoPanel.Visibility = Visibility.Collapsed;
+      }
+      else
+      {
+        foreach (object dayControl in CalendarDays.Children)
+        {
+          if (dayControl is CalendarDay)
+          {
+            CalendarDay cDay = dayControl as CalendarDay;
+            cDay.OnDeselect();
+          }
+        }
+        SelectedDay.OnSelect();
+        DateInfoPanel.Visibility = Visibility.Visible;
+      }
     }
   }
 }

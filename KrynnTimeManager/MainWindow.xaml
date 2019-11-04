@@ -66,9 +66,10 @@
                        Grid.Column='5'
                        HorizontalAlignment='Right' />
           </Grid>
-          <StackPanel DockPanel.Dock='Right'
+          <StackPanel x:Name='DateInfoPanel'
+                      DockPanel.Dock='Right'
                       Width='300'
-                      Background='Gray'
+                      Background='White'
                       Visibility='Collapsed'></StackPanel>
           <Grid x:Name='CalendarDays'
                 Background='BlanchedAlmond'>

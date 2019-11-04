@@ -13,144 +13,148 @@
     <Border x:Name='outerBorder'
             BorderBrush='Black'
             BorderThickness='1'>
-      <Border x:Name='CurrentDayBorder'
+      <Border x:Name='SelectedBorder'
+              BorderBrush='MediumVioletRed'
               BorderThickness='0'>
-        <StackPanel>
-          <TextBlock x:Name='DayNumber'
-                     HorizontalAlignment='Left'
-                     Text='1' />
-          <TextBlock x:Name='EventString'
-                     Text='Event Name'
-                     HorizontalAlignment='Center' />
-          <Grid>
-            <Grid.RowDefinitions>
-              <RowDefinition Height='10*' />
-              <RowDefinition Height='1*' />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-              <ColumnDefinition Width='1*' />
-              <ColumnDefinition Width='1*' />
-              <ColumnDefinition Width='1*' />
-            </Grid.ColumnDefinitions>
-            <Ellipse Height='40'
-                     Width='40'
-                     Grid.Column='0'
-                     Grid.Row='0'>
-              <Ellipse.Fill>
-                <LinearGradientBrush EndPoint='0.5,1'
-                                     StartPoint='0.5,0'>
-                  <LinearGradientBrush.RelativeTransform>
-                    <TransformGroup>
-                      <ScaleTransform CenterY='0.5'
-                                      CenterX='0.5' />
-                      <SkewTransform CenterY='0.5'
-                                     CenterX='0.5' />
-                      <RotateTransform Angle='90'
-                                       CenterY='0.5'
-                                       CenterX='0.5' />
-                      <TranslateTransform />
-                    </TransformGroup>
-                  </LinearGradientBrush.RelativeTransform>
-                  <GradientStop x:Name='SolinariXLeft'
-                                Color='#00000000'
-                                Offset='0' />
-                  <GradientStop x:Name='SolinariLeft'
-                                Color='LightGray' />
-                  <GradientStop x:Name='SolinariRight'
-                                Offset='0.996'
-                                Color='LightGray' />
-                  <GradientStop x:Name='SolinariXRight'
-                                Color='#00000000'
-                                Offset='1' />
-                </LinearGradientBrush>
-              </Ellipse.Fill>
-            </Ellipse>
-            <Ellipse Height='25'
-                     Width='25'
-                     Grid.Column='1'
-                     Grid.Row='0'>
-              <Ellipse.Fill>
-                <LinearGradientBrush EndPoint='0.5,1'
-                                     StartPoint='0.5,0'>
-                  <LinearGradientBrush.RelativeTransform>
-                    <TransformGroup>
-                      <ScaleTransform CenterY='0.5'
-                                      CenterX='0.5' />
-                      <SkewTransform CenterY='0.5'
-                                     CenterX='0.5' />
-                      <RotateTransform Angle='90'
-                                       CenterY='0.5'
-                                       CenterX='0.5' />
-                      <TranslateTransform />
-                    </TransformGroup>
-                  </LinearGradientBrush.RelativeTransform>
-                  <GradientStop x:Name='LunitariXLeft'
-                                Color='#00000000'
-                                Offset='0' />
-                  <GradientStop x:Name='LunitariLeft'
-                                Color='Red' />
-                  <GradientStop x:Name='LunitariRight'
-                                Offset='0.996'
-                                Color='Red' />
-                  <GradientStop x:Name='LunitariXRight'
-                                Color='#00000000'
-                                Offset='1' />
-                </LinearGradientBrush>
-              </Ellipse.Fill>
-            </Ellipse>
-            <Ellipse Height='15'
-                     Width='15'
-                     Grid.Column='2'
-                     Grid.Row='0'>
-              <Ellipse.Fill>
-                <LinearGradientBrush EndPoint='0.5,1'
-                                     StartPoint='0.5,0'>
-                  <LinearGradientBrush.RelativeTransform>
-                    <TransformGroup>
-                      <ScaleTransform CenterY='0.5'
-                                      CenterX='0.5' />
-                      <SkewTransform CenterY='0.5'
-                                     CenterX='0.5' />
-                      <RotateTransform Angle='90'
-                                       CenterY='0.5'
-                                       CenterX='0.5' />
-                      <TranslateTransform />
-                    </TransformGroup>
-                  </LinearGradientBrush.RelativeTransform>
-                  <GradientStop x:Name='NuitariXLeft'
-                                Color='#00000000'
-                                Offset='0' />
-                  <GradientStop x:Name='NuitariLeft'
-                                Color='Black' />
-                  <GradientStop x:Name='NuitariRight'
-                                Offset='0.996'
-                                Color='Black' />
-                  <GradientStop x:Name='NuitariXRight'
-                                Color='#00000000'
-                                Offset='1' />
-                </LinearGradientBrush>
-              </Ellipse.Fill>
-            </Ellipse>
-            <TextBlock x:Name='SolPhase'
-                       Text='High'
-                       FontSize='10'
+        <Border x:Name='CurrentDayBorder'
+                BorderThickness='0'>
+          <StackPanel>
+            <TextBlock x:Name='DayNumber'
+                       HorizontalAlignment='Left'
+                       Text='1' />
+            <TextBlock x:Name='EventString'
+                       Text='Event Name'
+                       HorizontalAlignment='Center' />
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height='10*' />
+                <RowDefinition Height='1*' />
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width='1*' />
+                <ColumnDefinition Width='1*' />
+                <ColumnDefinition Width='1*' />
+              </Grid.ColumnDefinitions>
+              <Ellipse Height='40'
+                       Width='40'
                        Grid.Column='0'
-                       Grid.Row='1'
-                       HorizontalAlignment='Center'/>
-            <TextBlock x:Name='LunPhase'
-                       Text='Low'
-                       FontSize='10'
+                       Grid.Row='0'>
+                <Ellipse.Fill>
+                  <LinearGradientBrush EndPoint='0.5,1'
+                                       StartPoint='0.5,0'>
+                    <LinearGradientBrush.RelativeTransform>
+                      <TransformGroup>
+                        <ScaleTransform CenterY='0.5'
+                                        CenterX='0.5' />
+                        <SkewTransform CenterY='0.5'
+                                       CenterX='0.5' />
+                        <RotateTransform Angle='90'
+                                         CenterY='0.5'
+                                         CenterX='0.5' />
+                        <TranslateTransform />
+                      </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop x:Name='SolinariXLeft'
+                                  Color='#00000000'
+                                  Offset='0' />
+                    <GradientStop x:Name='SolinariLeft'
+                                  Color='LightGray' />
+                    <GradientStop x:Name='SolinariRight'
+                                  Offset='0.996'
+                                  Color='LightGray' />
+                    <GradientStop x:Name='SolinariXRight'
+                                  Color='#00000000'
+                                  Offset='1' />
+                  </LinearGradientBrush>
+                </Ellipse.Fill>
+              </Ellipse>
+              <Ellipse Height='25'
+                       Width='25'
                        Grid.Column='1'
-                       Grid.Row='1'
-                       HorizontalAlignment='Center'/>
-            <TextBlock x:Name='NuiPhase'
-                       Text='Wane'
-                       FontSize='10'
+                       Grid.Row='0'>
+                <Ellipse.Fill>
+                  <LinearGradientBrush EndPoint='0.5,1'
+                                       StartPoint='0.5,0'>
+                    <LinearGradientBrush.RelativeTransform>
+                      <TransformGroup>
+                        <ScaleTransform CenterY='0.5'
+                                        CenterX='0.5' />
+                        <SkewTransform CenterY='0.5'
+                                       CenterX='0.5' />
+                        <RotateTransform Angle='90'
+                                         CenterY='0.5'
+                                         CenterX='0.5' />
+                        <TranslateTransform />
+                      </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop x:Name='LunitariXLeft'
+                                  Color='#00000000'
+                                  Offset='0' />
+                    <GradientStop x:Name='LunitariLeft'
+                                  Color='Red' />
+                    <GradientStop x:Name='LunitariRight'
+                                  Offset='0.996'
+                                  Color='Red' />
+                    <GradientStop x:Name='LunitariXRight'
+                                  Color='#00000000'
+                                  Offset='1' />
+                  </LinearGradientBrush>
+                </Ellipse.Fill>
+              </Ellipse>
+              <Ellipse Height='15'
+                       Width='15'
                        Grid.Column='2'
-                       Grid.Row='1'
-                       HorizontalAlignment='Center'/>
-          </Grid>
-        </StackPanel>
+                       Grid.Row='0'>
+                <Ellipse.Fill>
+                  <LinearGradientBrush EndPoint='0.5,1'
+                                       StartPoint='0.5,0'>
+                    <LinearGradientBrush.RelativeTransform>
+                      <TransformGroup>
+                        <ScaleTransform CenterY='0.5'
+                                        CenterX='0.5' />
+                        <SkewTransform CenterY='0.5'
+                                       CenterX='0.5' />
+                        <RotateTransform Angle='90'
+                                         CenterY='0.5'
+                                         CenterX='0.5' />
+                        <TranslateTransform />
+                      </TransformGroup>
+                    </LinearGradientBrush.RelativeTransform>
+                    <GradientStop x:Name='NuitariXLeft'
+                                  Color='#00000000'
+                                  Offset='0' />
+                    <GradientStop x:Name='NuitariLeft'
+                                  Color='Black' />
+                    <GradientStop x:Name='NuitariRight'
+                                  Offset='0.996'
+                                  Color='Black' />
+                    <GradientStop x:Name='NuitariXRight'
+                                  Color='#00000000'
+                                  Offset='1' />
+                  </LinearGradientBrush>
+                </Ellipse.Fill>
+              </Ellipse>
+              <TextBlock x:Name='SolPhase'
+                         Text='High'
+                         FontSize='10'
+                         Grid.Column='0'
+                         Grid.Row='1'
+                         HorizontalAlignment='Center' />
+              <TextBlock x:Name='LunPhase'
+                         Text='Low'
+                         FontSize='10'
+                         Grid.Column='1'
+                         Grid.Row='1'
+                         HorizontalAlignment='Center' />
+              <TextBlock x:Name='NuiPhase'
+                         Text='Wane'
+                         FontSize='10'
+                         Grid.Column='2'
+                         Grid.Row='1'
+                         HorizontalAlignment='Center' />
+            </Grid>
+          </StackPanel>
+        </Border>
       </Border>
     </Border>
   </Grid>

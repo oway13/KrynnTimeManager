@@ -22,6 +22,7 @@ namespace KrynnTimeManager.UserControls
   public partial class CalendarDay : UserControl
   {
     private KrynnDateTime Date;
+    public bool Selected;
 
     public CalendarDay(KrynnDateTime krynnDateTime)
     {
@@ -30,6 +31,7 @@ namespace KrynnTimeManager.UserControls
       Name = Date.ToCDName();
       EventString.Text = Name;
       DayNumber.Text = Date.Day.ToString();
+      Selected = false;
       DisplayMoons();
 
     }
@@ -149,5 +151,16 @@ namespace KrynnTimeManager.UserControls
       outerBorder.BorderThickness = new Thickness(1);
     }
 
+    public void OnSelect()
+    {
+      Selected = true;
+      SelectedBorder.BorderThickness = new Thickness(2);
+    }
+
+    public void OnDeselect()
+    {
+      Selected = false;
+      SelectedBorder.BorderThickness = new Thickness(0);
+    }
   }
 }
